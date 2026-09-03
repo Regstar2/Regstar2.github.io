@@ -24,25 +24,30 @@ jobs:
           set -euo pipefail
           mkdir -p assets/profile assets/projects assets/stack
 
-          curl -fsSL "https://raw.githubusercontent.com/Regstar2/Regstar2/main/assets/silly-kitty-aka-me.jpg" -o assets/profile/cat.jpg
-          curl -fsSL "https://raw.githubusercontent.com/Regstar2/dns-switcher/main/assets/app-dark.ico" -o assets/projects/dns-switcher.ico
-          curl -fsSL "https://raw.githubusercontent.com/Regstar2/white-list-checker/main/scripts/assets/ic_launcher_source.png" -o assets/projects/white-list-checker.png
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" -o assets/projects/wdtt-gateway.svg
-          curl -fsSL "https://raw.githubusercontent.com/Regstar2/tg-ws-proxy-android/main/icon.png" -o assets/projects/tg-ws-proxy-android.png
-          curl -fsSL "https://raw.githubusercontent.com/Regstar2/windows-iso-builder/master/src/WindowsISOBuilder.Gui/Assets/WindowsISOBuilder.png" -o assets/projects/windows-iso-builder.png
-          curl -fsSL "https://raw.githubusercontent.com/Regstar2/music-ark/main/docs/assets/logo.png" -o assets/projects/music-ark.png
+          download() {
+            echo "Downloading $2"
+            curl --retry 3 --retry-delay 1 -fsSL "$1" -o "$2"
+          }
 
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" -o assets/stack/python.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" -o assets/stack/java.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" -o assets/stack/csharp.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" -o assets/stack/go.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" -o assets/stack/kotlin.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg" -o assets/stack/dotnet.svg
-          curl -fsSL "https://cdn.simpleicons.org/android/3DDC84" -o assets/stack/android.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" -o assets/stack/docker.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" -o assets/stack/vscode.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" -o assets/stack/git.svg
-          curl -fsSL "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg" -o assets/stack/powershell.svg
+          download "https://raw.githubusercontent.com/Regstar2/Regstar2/main/assets/silly-kitty-aka-me.jpg" assets/profile/cat.jpg
+          download "https://raw.githubusercontent.com/Regstar2/dns-switcher/main/assets/app-dark.ico" assets/projects/dns-switcher.ico
+          download "https://raw.githubusercontent.com/Regstar2/white-list-checker/main/scripts/assets/ic_launcher_source.png" assets/projects/white-list-checker.png
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" assets/projects/wdtt-gateway.svg
+          download "https://raw.githubusercontent.com/Regstar2/tg-ws-proxy-android/main/icon.png" assets/projects/tg-ws-proxy-android.png
+          download "https://raw.githubusercontent.com/Regstar2/windows-iso-builder/master/src/WindowsISOBuilder.Gui/Assets/WindowsISOBuilder.png" assets/projects/windows-iso-builder.png
+          download "https://raw.githubusercontent.com/Regstar2/music-ark/main/docs/assets/logo.png" assets/projects/music-ark.png
+
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" assets/stack/python.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" assets/stack/java.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" assets/stack/csharp.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original-wordmark.svg" assets/stack/go.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/kotlin/kotlin-original.svg" assets/stack/kotlin.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg" assets/stack/dotnet.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original.svg" assets/stack/android.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-plain.svg" assets/stack/docker.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" assets/stack/vscode.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" assets/stack/git.svg
+          download "https://raw.githubusercontent.com/devicons/devicon/master/icons/powershell/powershell-original.svg" assets/stack/powershell.svg
 
       - name: Commit assets
         shell: bash

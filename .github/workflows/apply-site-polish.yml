@@ -1,0 +1,123 @@
+name: Apply site polish
+
+on:
+  push:
+    branches:
+      - feature/site-polish
+    paths:
+      - .github/workflows/apply-site-polish.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/site-polish
+          fetch-depth: 0
+
+      - name: Apply changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p assets/profile
+          if [ -f assets/profile-photo.jpg ]; then
+            git mv assets/profile-photo.jpg assets/profile/photo.jpg
+          fi
+
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+
+          replacements = {
+              '<meta name="theme-color" content="#090a12">': '<meta name="theme-color" content="#5C3A9E">',
+              '<meta property="og:url" content="https://regstar2.github.io/">': '''<meta property="og:url" content="https://regstar2.github.io/">\n  <meta property="og:image" content="https://regstar2.github.io/assets/social-preview.png">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Regstar — Software Engineering student · AI-assisted developer">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="Regstar">\n  <meta name="twitter:description" content="Software Engineering student · AI-assisted developer">\n  <meta name="twitter:image" content="https://regstar2.github.io/assets/social-preview.png">''',
+              '<title>Regstar</title>': '''<title>Regstar</title>\n\n  <link rel="icon" href="./favicon.ico" sizes="any">\n  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">''',
+              '''    <a class="brand" href="#top" aria-label="Regstar home">REGSTAR</a>\n    <nav class="site-nav" aria-label="Primary navigation">''': '''    <a class="brand" href="#top" aria-label="Regstar home">REGSTAR</a>\n    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>\n      <span></span>\n      <span></span>\n      <span></span>\n    </button>\n    <nav id="primary-nav" class="site-nav" aria-label="Primary navigation" data-menu>''',
+              'https://raw.githubusercontent.com/Regstar2/Regstar2/main/assets/silly-kitty-aka-me.jpg': './assets/profile/cat.jpg',
+              './assets/profile-photo.jpg': './assets/profile/photo.jpg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg': './assets/stack/python.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg': './assets/stack/java.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg': './assets/stack/csharp.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg': './assets/stack/go.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg': './assets/stack/kotlin.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg': './assets/stack/dotnet.svg',
+              'https://cdn.simpleicons.org/android/3DDC84': './assets/stack/android.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg': './assets/stack/docker.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg': './assets/stack/vscode.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg': './assets/stack/git.svg',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg': './assets/stack/powershell.svg',
+              'https://raw.githubusercontent.com/Regstar2/dns-switcher/main/assets/app-dark.ico': './assets/projects/dns-switcher.ico',
+              'https://raw.githubusercontent.com/Regstar2/white-list-checker/main/scripts/assets/ic_launcher_source.png': './assets/projects/white-list-checker.png',
+              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg': './assets/projects/wdtt-gateway.svg',
+              'https://raw.githubusercontent.com/Regstar2/tg-ws-proxy-android/main/icon.png': './assets/projects/tg-ws-proxy-android.png',
+              'https://raw.githubusercontent.com/Regstar2/windows-iso-builder/master/src/WindowsISOBuilder.Gui/Assets/WindowsISOBuilder.png': './assets/projects/windows-iso-builder.png',
+              'https://raw.githubusercontent.com/Regstar2/music-ark/main/docs/assets/logo.png': './assets/projects/music-ark.png',
+          }
+
+          for old, new in replacements.items():
+              if old not in html:
+                  raise SystemExit(f'Missing expected index fragment: {old[:100]}')
+              html = html.replace(old, new, 1)
+
+          index.write_text(html, encoding='utf-8')
+
+          styles = Path('styles.css')
+          css = styles.read_text(encoding='utf-8')
+          css = css.replace('  --accent: #6366f1;', '  --accent: #5c3a9e;', 1)
+          css = css.replace('  --accent-soft: #8185ff;', '  --accent-soft: #9a7ad1;', 1)
+          css = css.replace('  background: rgba(99, 102, 241, 0.15);\n  color: #9da0ff;', '  background: rgba(92, 58, 158, 0.22);\n  color: #c4afe8;', 1)
+
+          nav_anchor = '''.brand {\n  font-size: 1.06rem;\n  font-weight: 700;\n  letter-spacing: 0.09em;\n}\n\n'''
+          nav_extra = '''.brand {\n  font-size: 1.06rem;\n  font-weight: 700;\n  letter-spacing: 0.09em;\n}\n\n.menu-toggle {\n  display: none;\n  width: 44px;\n  height: 44px;\n  padding: 10px;\n  border: 1px solid var(--border);\n  border-radius: 12px;\n  background: rgba(17, 19, 34, 0.78);\n  cursor: pointer;\n}\n\n.menu-toggle span {\n  display: block;\n  width: 100%;\n  height: 2px;\n  border-radius: 999px;\n  background: var(--muted-strong);\n  transform-origin: center;\n  transition: transform 160ms ease, opacity 160ms ease, background 160ms ease;\n}\n\n.menu-toggle span + span {\n  margin-top: 5px;\n}\n\n.menu-toggle:hover span {\n  background: var(--text);\n}\n\n'''
+          if nav_anchor not in css:
+              raise SystemExit('Missing brand CSS anchor')
+          css = css.replace(nav_anchor, nav_extra, 1)
+
+          mobile_old = '''@media (max-width: 900px) {\n  .site-header {\n    min-height: 72px;\n  }\n\n  .site-nav a:not(.nav-github) {\n    display: none;\n  }\n'''
+          mobile_new = '''@media (max-width: 900px) {\n  .site-header {\n    position: relative;\n    min-height: 72px;\n  }\n\n  .menu-toggle {\n    display: block;\n  }\n\n  .site-nav {\n    position: absolute;\n    top: calc(100% + 10px);\n    right: 0;\n    z-index: 20;\n    width: min(260px, calc(100vw - 30px));\n    padding: 10px;\n    flex-direction: column;\n    align-items: stretch;\n    gap: 4px;\n    border: 1px solid var(--border);\n    border-radius: 16px;\n    background: rgba(13, 15, 28, 0.96);\n    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);\n    backdrop-filter: blur(18px);\n    opacity: 0;\n    visibility: hidden;\n    pointer-events: none;\n    transform: translateY(-8px) scale(0.98);\n    transform-origin: top right;\n    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;\n  }\n\n  .site-header.menu-open .site-nav {\n    opacity: 1;\n    visibility: visible;\n    pointer-events: auto;\n    transform: translateY(0) scale(1);\n  }\n\n  .site-nav a {\n    padding: 12px 14px;\n    border-radius: 10px;\n  }\n\n  .site-nav a:hover {\n    background: var(--surface-raised);\n  }\n\n  .nav-github {\n    border: 0;\n  }\n\n  .site-header.menu-open .menu-toggle span:nth-child(1) {\n    transform: translateY(7px) rotate(45deg);\n  }\n\n  .site-header.menu-open .menu-toggle span:nth-child(2) {\n    opacity: 0;\n  }\n\n  .site-header.menu-open .menu-toggle span:nth-child(3) {\n    transform: translateY(-7px) rotate(-45deg);\n  }\n'''
+          if mobile_old not in css:
+              raise SystemExit('Missing mobile navigation CSS anchor')
+          css = css.replace(mobile_old, mobile_new, 1)
+          styles.write_text(css, encoding='utf-8')
+
+          script = Path('script.js')
+          js = script.read_text(encoding='utf-8').rstrip() + '''\n\nconst menuToggle = document.querySelector('[data-menu-toggle]');\nconst siteHeader = menuToggle?.closest('.site-header');\nconst siteNav = document.querySelector('[data-menu]');\n\nif (menuToggle && siteHeader && siteNav) {\n  const setMenuOpen = (open) => {\n    siteHeader.classList.toggle('menu-open', open);\n    menuToggle.setAttribute('aria-expanded', String(open));\n    menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');\n  };\n\n  menuToggle.addEventListener('click', () => {\n    setMenuOpen(!siteHeader.classList.contains('menu-open'));\n  });\n\n  siteNav.querySelectorAll('a').forEach((link) => {\n    link.addEventListener('click', () => setMenuOpen(false));\n  });\n\n  document.addEventListener('click', (event) => {\n    if (!siteHeader.contains(event.target)) {\n      setMenuOpen(false);\n    }\n  });\n\n  document.addEventListener('keydown', (event) => {\n    if (event.key === 'Escape') {\n      setMenuOpen(false);\n      menuToggle.focus();\n    }\n  });\n\n  window.addEventListener('resize', () => {\n    if (window.innerWidth > 900) {\n      setMenuOpen(false);\n    }\n  });\n}\n'''
+          script.write_text(js, encoding='utf-8')
+          PY
+
+          rm -f .github/workflows/localize-assets.yml
+          rm -f .github/workflows/localize-assets-v2.yml
+          rm -f .github/workflows/generate-social-preview.yml
+          rm -f .github/workflows/apply-site-polish.yml
+
+      - name: Validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f assets/profile/cat.jpg
+          test -f assets/profile/photo.jpg
+          test -f assets/social-preview.png
+          test -f assets/projects/music-ark.png
+          test -f assets/stack/python.svg
+          ! grep -Eq 'raw\.githubusercontent\.com|cdn\.jsdelivr\.net|cdn\.simpleicons\.org' index.html
+          grep -q '#5c3a9e' styles.css
+          grep -q 'assets/social-preview.png' index.html
+          grep -q 'data-menu-toggle' index.html
+          node --check script.js
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Polish site assets, branding and mobile navigation"
+          git push origin HEAD:feature/site-polish

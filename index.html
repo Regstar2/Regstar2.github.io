@@ -3,13 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090a12">
+  <meta name="theme-color" content="#5C3A9E">
   <meta name="description" content="Regstar — Software Engineering student and AI-assisted developer. Desktop, Android, networking and utility projects.">
   <meta property="og:title" content="Regstar">
   <meta property="og:description" content="Software Engineering student · AI-assisted developer">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://regstar2.github.io/">
+  <meta property="og:image" content="https://regstar2.github.io/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Regstar — Software Engineering student · AI-assisted developer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Regstar">
+  <meta name="twitter:description" content="Software Engineering student · AI-assisted developer">
+  <meta name="twitter:image" content="https://regstar2.github.io/assets/social-preview.png">
   <title>Regstar</title>
+
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +34,12 @@
 
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Regstar home">REGSTAR</a>
-    <nav class="site-nav" aria-label="Primary navigation">
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="primary-nav" class="site-nav" aria-label="Primary navigation" data-menu>
       <a href="#projects">Projects</a>
       <a href="#stack">Stack</a>
       <a class="nav-github" href="https://github.com/Regstar2" target="_blank" rel="noreferrer">GitHub ↗</a>
@@ -45,10 +61,10 @@
 
       <div class="hero-visual" aria-hidden="true">
         <div class="cat-frame cat-frame-main">
-          <img src="https://raw.githubusercontent.com/Regstar2/Regstar2/main/assets/silly-kitty-aka-me.jpg" alt="" fetchpriority="high">
+          <img src="./assets/profile/cat.jpg" alt="" fetchpriority="high">
         </div>
         <div class="cat-frame cat-frame-small">
-          <img src="./assets/profile-photo.jpg" alt="" loading="lazy">
+          <img src="./assets/profile/photo.jpg" alt="" loading="lazy">
         </div>
       </div>
     </section>
@@ -60,17 +76,17 @@
       </div>
 
       <div class="stack-list" aria-label="Technology stack">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" title="Python">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" title="Java">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" title="C#">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" alt="Go" title="Go">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" title="Kotlin">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg" alt=".NET" title=".NET">
-        <img src="https://cdn.simpleicons.org/android/3DDC84" alt="Android" title="Android">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" alt="Docker" title="Docker">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" title="VS Code">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" title="Git">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg" alt="PowerShell" title="PowerShell">
+        <img src="./assets/stack/python.svg" alt="Python" title="Python">
+        <img src="./assets/stack/java.svg" alt="Java" title="Java">
+        <img src="./assets/stack/csharp.svg" alt="C#" title="C#">
+        <img src="./assets/stack/go.svg" alt="Go" title="Go">
+        <img src="./assets/stack/kotlin.svg" alt="Kotlin" title="Kotlin">
+        <img src="./assets/stack/dotnet.svg" alt=".NET" title=".NET">
+        <img src="./assets/stack/android.svg" alt="Android" title="Android">
+        <img src="./assets/stack/docker.svg" alt="Docker" title="Docker">
+        <img src="./assets/stack/vscode.svg" alt="VS Code" title="VS Code">
+        <img src="./assets/stack/git.svg" alt="Git" title="Git">
+        <img src="./assets/stack/powershell.svg" alt="PowerShell" title="PowerShell">
       </div>
     </section>
 
@@ -85,7 +101,7 @@
       <div class="project-grid">
         <article class="project-card">
           <div class="project-topline">
-            <img class="project-icon" src="https://raw.githubusercontent.com/Regstar2/dns-switcher/main/assets/app-dark.ico" alt="DnsSwitcher icon">
+            <img class="project-icon" src="./assets/projects/dns-switcher.ico" alt="DnsSwitcher icon">
             <span class="status status-stable">Stable</span>
           </div>
           <h3><a href="https://github.com/Regstar2/dns-switcher" target="_blank" rel="noreferrer">DnsSwitcher <span aria-hidden="true">↗</span></a></h3>
@@ -95,7 +111,7 @@
 
         <article class="project-card">
           <div class="project-topline">
-            <img class="project-icon" src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/scripts/assets/ic_launcher_source.png" alt="WhiteListChecker icon">
+            <img class="project-icon" src="./assets/projects/white-list-checker.png" alt="WhiteListChecker icon">
             <span class="status status-stable">Stable</span>
           </div>
           <h3><a href="https://github.com/Regstar2/white-list-checker" target="_blank" rel="noreferrer">WhiteListChecker <span aria-hidden="true">↗</span></a></h3>
@@ -105,7 +121,7 @@
 
         <article class="project-card">
           <div class="project-topline">
-            <img class="project-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker icon">
+            <img class="project-icon" src="./assets/projects/wdtt-gateway.svg" alt="Docker icon">
             <span class="status status-stable">Stable</span>
           </div>
           <h3><a href="https://github.com/Regstar2/wdtt-windows-home-gateway" target="_blank" rel="noreferrer">WDTT Gateway <span aria-hidden="true">↗</span></a></h3>
@@ -115,7 +131,7 @@
 
         <article class="project-card">
           <div class="project-topline">
-            <img class="project-icon" src="https://raw.githubusercontent.com/Regstar2/tg-ws-proxy-android/main/icon.png" alt="TgWsProxy Android icon">
+            <img class="project-icon" src="./assets/projects/tg-ws-proxy-android.png" alt="TgWsProxy Android icon">
             <span class="status status-active">Active</span>
           </div>
           <h3><a href="https://github.com/Regstar2/tg-ws-proxy-android" target="_blank" rel="noreferrer">TgWsProxy Android <span aria-hidden="true">↗</span></a></h3>
@@ -125,7 +141,7 @@
 
         <article class="project-card">
           <div class="project-topline">
-            <img class="project-icon" src="https://raw.githubusercontent.com/Regstar2/windows-iso-builder/master/src/WindowsISOBuilder.Gui/Assets/WindowsISOBuilder.png" alt="Windows ISO Builder icon">
+            <img class="project-icon" src="./assets/projects/windows-iso-builder.png" alt="Windows ISO Builder icon">
             <span class="status status-stable">Stable</span>
           </div>
           <h3><a href="https://github.com/Regstar2/windows-iso-builder" target="_blank" rel="noreferrer">Windows ISO Builder <span aria-hidden="true">↗</span></a></h3>
@@ -135,7 +151,7 @@
 
         <article class="project-card">
           <div class="project-topline">
-            <img class="project-icon" src="https://raw.githubusercontent.com/Regstar2/music-ark/main/docs/assets/logo.png" alt="MusicArk icon">
+            <img class="project-icon" src="./assets/projects/music-ark.png" alt="MusicArk icon">
             <span class="status status-beta">Beta</span>
           </div>
           <h3><a href="https://github.com/Regstar2/music-ark" target="_blank" rel="noreferrer">MusicArk <span aria-hidden="true">↗</span></a></h3>

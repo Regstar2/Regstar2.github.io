@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5C3A9E">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="WhiteListChecker — Android-приложение для диагностики мобильной сети и обнаружения признаков режима белых списков.">
+  <meta property="og:title" content="WhiteListChecker — Regstar">
+  <meta property="og:description" content="Диагностика мобильной сети, DNS/HTTPS-проверки, мониторинг и статистика.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://regstar2.github.io/projects/white-list-checker/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg">
+  <title>WhiteListChecker — Regstar</title>
+
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../project.css">
+</head>
+<body class="project-page">
+  <div class="page-glow page-glow-left" aria-hidden="true"></div>
+  <div class="page-glow page-glow-right" aria-hidden="true"></div>
+
+  <header class="project-header project-shell">
+    <a class="brand" href="../../" aria-label="Regstar home">REGSTAR</a>
+    <nav class="project-nav" aria-label="Project navigation">
+      <a href="#overview">Overview</a>
+      <a href="#screenshots">Screenshots</a>
+      <a class="project-nav-github" href="https://github.com/Regstar2/white-list-checker" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-hero project-shell">
+      <div class="project-hero-copy">
+        <a class="project-breadcrumb" href="../../#projects">← projects / white-list-checker</a>
+
+        <div class="project-identity">
+          <img class="project-logo" src="../../assets/projects/white-list-checker.png" alt="WhiteListChecker">
+          <span class="project-status">Stable · v1.0.0</span>
+        </div>
+
+        <p class="code-label">&gt; android.network_diagnostics</p>
+        <h1>WhiteList<br>Checker</h1>
+        <p class="project-lead">Диагностика мобильной сети и обнаружение признаков режима белых списков.</p>
+        <p class="project-summary">Проверяет доступность ресурсов именно через cellular-сеть, сопоставляет HTTPS и DNS-сигналы, сохраняет историю и помогает увидеть изменение состояния сети во времени.</p>
+
+        <div class="project-actions">
+          <a class="button button-primary project-download" href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/WhiteListChecker-v1.0.0-release.apk">Скачать v1.0.0</a>
+          <a class="button button-secondary" href="https://github.com/Regstar2/white-list-checker" target="_blank" rel="noreferrer">Исходный код ↗</a>
+        </div>
+
+        <div class="project-tags hero-tags" aria-label="Technologies">
+          <span>Android</span>
+          <span>Kotlin</span>
+          <span>Jetpack Compose</span>
+          <span>Room</span>
+        </div>
+      </div>
+
+      <div class="phone-stage" aria-label="WhiteListChecker screenshots">
+        <div class="phone phone-back phone-left">
+          <img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика WhiteListChecker">
+        </div>
+        <div class="phone phone-back phone-right">
+          <img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS WhiteListChecker">
+        </div>
+        <div class="phone phone-main">
+          <img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран WhiteListChecker">
+        </div>
+        <div class="stage-orbit orbit-one" aria-hidden="true"></div>
+        <div class="stage-orbit orbit-two" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="project-facts">
+      <div class="project-shell facts-grid">
+        <div><span>Platform</span><strong>Android 8+</strong></div>
+        <div><span>Release</span><strong>v1.0.0</strong></div>
+        <div><span>License</span><strong>MIT</strong></div>
+        <div><span>Data model</span><strong>Local-first</strong></div>
+      </div>
+    </section>
+
+    <section id="overview" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div>
+          <p class="code-label">$ overview</p>
+          <h2>Что делает приложение</h2>
+        </div>
+        <p>Не пытается «узнать правила оператора». Вместо этого измеряет наблюдаемое поведение мобильной сети и показывает, на каком уровне возникает проблема.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card feature-card-wide">
+          <span class="feature-index">01</span>
+          <div class="feature-icon">CELL</div>
+          <h3>Проверка через мобильную сеть</h3>
+          <p>Получает отдельный cellular Network через Android ConnectivityManager. Wi-Fi при этом можно оставить включённым.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">02</span>
+          <div class="feature-icon">DNS</div>
+          <h3>DNS-диагностика</h3>
+          <p>UDP/53, TCP fallback, пользовательские resolver и системный cellular resolver.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">03</span>
+          <div class="feature-icon">TLS</div>
+          <h3>HTTPS targets</h3>
+          <p>Проверяет группы LOCAL и FOREIGN через network-bound сокеты с обычной TLS-проверкой.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">04</span>
+          <div class="feature-icon">MON</div>
+          <h3>Мониторинг</h3>
+          <p>Фоновые проверки через WorkManager и активный мониторинг через foreground service.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">05</span>
+          <div class="feature-icon">LOG</div>
+          <h3>История и статистика</h3>
+          <p>Room-хранилище, timeline и экспорт накопленных данных в CSV, JSON или TXT.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-index">06</span>
+          <div class="feature-icon">NTF</div>
+          <h3>Уведомления</h3>
+          <p>Локальные Android-уведомления и опциональная личная Telegram-интеграция.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-section project-shell">
+      <div class="project-section-heading compact">
+        <div>
+          <p class="code-label">&gt; signal_pipeline</p>
+          <h2>Как формируется результат</h2>
+        </div>
+      </div>
+
+      <div class="pipeline" role="img" aria-label="Cellular Network flows to HTTPS and DNS checks and then to classification">
+        <div class="pipeline-node pipeline-primary">
+          <span>01</span>
+          <strong>Cellular Network</strong>
+          <small>Android network binding</small>
+        </div>
+        <div class="pipeline-arrow" aria-hidden="true">→</div>
+        <div class="pipeline-split">
+          <div class="pipeline-node">
+            <span>02A</span>
+            <strong>HTTPS</strong>
+            <small>LOCAL / FOREIGN</small>
+          </div>
+          <div class="pipeline-node">
+            <span>02B</span>
+            <strong>DNS</strong>
+            <small>Resolver diagnostics</small>
+          </div>
+        </div>
+        <div class="pipeline-arrow" aria-hidden="true">→</div>
+        <div class="pipeline-node pipeline-result">
+          <span>03</span>
+          <strong>Classification</strong>
+          <small>Наблюдаемое состояние</small>
+        </div>
+      </div>
+
+      <p class="project-note"><span>!</span> Результат — диагностическая оценка по наблюдаемым сетевым признакам, а не доказательство наличия у оператора конкретного режима фильтрации.</p>
+    </section>
+
+    <section id="screenshots" class="project-section screenshots-section">
+      <div class="project-shell">
+        <div class="project-section-heading">
+          <div>
+            <p class="code-label">$ screenshots</p>
+            <h2>Интерфейс</h2>
+          </div>
+          <p>Один и тот же набор экранов используется для ручной проверки, настройки диагностики и долговременного мониторинга.</p>
+        </div>
+      </div>
+
+      <div class="screenshot-rail" aria-label="WhiteListChecker screenshots">
+        <figure class="screenshot-card screenshot-featured">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран"></div>
+          <figcaption><span>01</span><strong>Главный экран</strong></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика"></div>
+          <figcaption><span>02</span><strong>Статистика</strong></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-sites.jpg" alt="Настройки сайтов"></div>
+          <figcaption><span>03</span><strong>Сайты</strong></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS"></div>
+          <figcaption><span>04</span><strong>DNS</strong></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/background-checks.jpg" alt="Фоновые проверки"></div>
+          <figcaption><span>05</span><strong>Фоновые проверки</strong></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/active-monitoring.jpg" alt="Активный мониторинг"></div>
+          <figcaption><span>06</span><strong>Мониторинг</strong></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/local-notifications.jpg" alt="Локальные уведомления"></div>
+          <figcaption><span>07</span><strong>Уведомления</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section project-shell">
+      <div class="project-two-column">
+        <div class="tech-panel">
+          <p class="code-label">&gt; technology</p>
+          <h2>Стек</h2>
+          <div class="tech-list">
+            <div><strong>Kotlin</strong><span>application</span></div>
+            <div><strong>Jetpack Compose</strong><span>UI</span></div>
+            <div><strong>Room</strong><span>history</span></div>
+            <div><strong>WorkManager</strong><span>background</span></div>
+            <div><strong>ConnectivityManager</strong><span>cellular routing</span></div>
+            <div><strong>GitHub Releases</strong><span>updates</span></div>
+          </div>
+        </div>
+
+        <div class="privacy-panel">
+          <p class="code-label">&gt; privacy</p>
+          <span class="privacy-badge">LOCAL-FIRST</span>
+          <h2>Данные остаются на устройстве</h2>
+          <p>История проверок, статистика и основная конфигурация хранятся локально. Центральный project-owned сервис для основной функциональности не требуется.</p>
+          <a href="https://github.com/Regstar2/white-list-checker/blob/main/PRIVACY.md" target="_blank" rel="noreferrer">Privacy policy ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-cta project-shell">
+      <img src="../../assets/projects/white-list-checker.png" alt="" aria-hidden="true">
+      <p class="code-label">$ install --stable</p>
+      <h2>Проверить мобильную сеть</h2>
+      <p>Стабильный релиз v1.0.0 · Android 8.0+ · MIT</p>
+      <div class="project-actions project-actions-center">
+        <a class="button button-primary project-download" href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/WhiteListChecker-v1.0.0-release.apk">Скачать APK</a>
+        <a class="button button-secondary" href="https://github.com/Regstar2/white-list-checker/releases/tag/v1.0.0" target="_blank" rel="noreferrer">Release notes ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer project-shell">
+    <a class="brand" href="../../">REGSTAR</a>
+    <span>Project page concept · WhiteListChecker</span>
+    <a href="https://github.com/Regstar2" target="_blank" rel="noreferrer">github.com/Regstar2 ↗</a>
+  </footer>
+</body>
+</html>

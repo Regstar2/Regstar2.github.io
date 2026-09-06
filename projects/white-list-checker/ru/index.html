@@ -870,9 +870,9 @@ GitHub ↗
 class="app-icon"
 src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
 alt="WhiteListChecker icon"><span class="status">Стабильная версия · v1.0.0</span></div><p class="eyebrow">&gt; android / диагностика мобильной сети</p><h1>WhiteListChecker</h1><p class="lead">
-Диагностика доступности мобильной сети и обнаружение наблюдаемых признаков режима белых списков.
+Диагностика мобильной сети и обнаружение признаков режима белых списков по наблюдаемому сетевому поведению.
 </p><p class="summary">
-WhiteListChecker выполняет проверки через отдельно полученный Android Network мобильной сети,
+WhiteListChecker выполняет проверки через отдельно полученный объект Android Network для мобильного соединения,
 даже если Wi-Fi остаётся основной сетью телефона. Приложение объединяет HTTPS-проверки
 с DNS-диагностикой, хранит результаты локально и отслеживает изменения во времени.
 </p><div class="tags"><span class="tag">Android 8+</span><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Room</span><span class="tag">RU / EN</span><span class="tag">MIT</span></div><div class="actions"><a class="button primary"
@@ -888,7 +888,7 @@ href="https://github.com/Regstar2/white-list-checker"
 target="_blank"
 rel="noreferrer">
 Исходный код ↗
-</a></div></div><div class="hero-visual" aria-label="WhiteListChecker interface"><div class="visual-glow"></div><div class="phone left"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика WhiteListChecker"></div><div class="phone main"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран WhiteListChecker"></div><div class="phone right"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS WhiteListChecker"></div></div></section><section class="fact-strip"><div class="facts shell"><div class="fact"><span>Платформа</span><strong>Android 8+</strong></div><div class="fact"><span>Релиз</span><strong>v1.0.0</strong></div><div class="fact"><span>Опубликован</span><strong>25 августа 2026</strong></div><div class="fact"><span>Модель данных</span><strong>Local-first</strong></div><div class="fact"><span>Лицензия</span><strong>MIT</strong></div></div></section><section id="overview" class="section shell"><div class="section-head"><div><p class="eyebrow">$ контекст</p><h2>Что измеряет приложение</h2></div><p>
+</a></div></div><div class="hero-visual" aria-label="WhiteListChecker interface"><div class="visual-glow"></div><div class="phone left"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика WhiteListChecker"></div><div class="phone main"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран WhiteListChecker"></div><div class="phone right"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS WhiteListChecker"></div></div></section><section class="fact-strip"><div class="facts shell"><div class="fact"><span>Платформа</span><strong>Android 8+</strong></div><div class="fact"><span>Релиз</span><strong>v1.0.0</strong></div><div class="fact"><span>Опубликован</span><strong>25 августа 2026</strong></div><div class="fact"><span>Модель данных</span><strong>Локально на устройстве</strong></div><div class="fact"><span>Лицензия</span><strong>MIT</strong></div></div></section><section id="overview" class="section shell"><div class="section-head"><div><p class="eyebrow">$ контекст</p><h2>Что измеряет приложение</h2></div><p>
 WhiteListChecker не имеет доступа к внутренним правилам фильтрации оператора.
 Приложение показывает наблюдаемое сетевое поведение и намеренно не выдаёт результат
 за доказательство конкретного механизма на стороне оператора.
@@ -896,8 +896,8 @@ WhiteListChecker не имеет доступа к внутренним прав
 Причиной могут быть маршрутизация, DNS, TLS, временная потеря связи, VPN или туннель,
 настройки устройства либо фильтрация на стороне сети. Одной проверки «работает / не работает»
 недостаточно для полезной диагностики.
-</p></article><article class="panel story-card solution"><span class="story-number">02 / подход</span><h3>Измерять прямой маршрут мобильной сети по нескольким независимым сигналам.</h3><p>
-Приложение получает отдельный Android Network для мобильной сети, выполняет через него HTTPS- и DNS-проверки,
+</p></article><article class="panel story-card solution"><span class="story-number">02 / подход</span><h3>Проверять прямой маршрут мобильной сети по нескольким независимым сигналам.</h3><p>
+Приложение получает отдельный объект Android Network для мобильного соединения и выполняет через него HTTPS- и DNS-проверки,
 использует DNS как дополнительный диагностический сигнал, а затем локально сохраняет результат для
 истории, статистики и мониторинга.
 </p></article></div></section><section id="features" class="section shell"><div class="section-head"><div><p class="eyebrow">&gt; возможности</p><h2>Основные возможности</h2></div><p>
@@ -918,12 +918,12 @@ Room хранит историю проверок, результаты по о�
 Данные можно экспортировать в CSV, JSON или TXT.
 </p></article><article class="feature-card"><span class="feature-index">05</span><div class="feature-icon">MON</div><h3>Фоновый и активный мониторинг</h3><p>
 Периодические проверки выполняются через WorkManager, а явно запущенный непрерывный мониторинг
-работает через службу переднего плана (foreground service).
+работает через сервис переднего плана (foreground service).
 </p></article><article class="feature-card"><span class="feature-index">06</span><div class="feature-icon">NTF</div><h3>Уведомления</h3><p>
 Поддерживает локальные Android-уведомления и необязательную личную интеграцию с Telegram через
 Cloudflare Worker и Telegram-бота пользователя.
 </p></article><article class="feature-card"><span class="feature-index">07</span><div class="feature-icon">UPD</div><h3>Проверка обновлений</h3><p>
-Асинхронно проверяет официальные GitHub Releases, отфильтровывает prerelease-версии
+Асинхронно проверяет официальные GitHub Releases, не предлагает prerelease-версии как обычные стабильные обновления
 и позволяет открыть официальную страницу релиза.
 </p></article><article class="feature-card"><span class="feature-index">08</span><div class="feature-icon">ISSUE</div><h3>Встроенная обратная связь</h3><p>
 Действия «сообщить об ошибке» и «предложить улучшение» открывают GitHub Issue Forms
@@ -934,13 +934,13 @@ Cloudflare Worker и Telegram-бота пользователя.
 </p></article></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">$ схема_проверки</p><h2>Как формируется результат</h2></div><p>
 Доступность сайтов — основной сигнал классификации. DNS используется как дополнительный,
 поэтому один недоступный публичный DNS-резолвер не превращается автоматически в общую DNS-ошибку мобильной сети.
-</p></div><div class="pipeline" role="img" aria-label="Cellular Network flows to HTTPS and DNS-диагностика, then to classification"><div class="node primary"><small>01 / транспорт</small><strong>Cellular Network</strong><span>Отдельный Android Network</span></div><div class="arrow" aria-hidden="true">→</div><div class="node-split"><div class="node"><small>02A / основной</small><strong>HTTPS-цели</strong><span>Группы LOCAL / FOREIGN</span></div><div class="node"><small>02B / дополнительный</small><strong>DNS-проверки</strong><span>UDP / TCP / cellular resolver</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="node result"><small>03 / результат</small><strong>Наблюдаемое состояние</strong><span>Классификатор + локальная история</span></div></div><div class="note"><strong>!</strong><span>
+</p></div><div class="pipeline" role="img" aria-label="Cellular Network flows to HTTPS and DNS-диагностика, then to classification"><div class="node primary"><small>01 / транспорт</small><strong>Мобильная сеть</strong><span>Отдельный Android Network</span></div><div class="arrow" aria-hidden="true">→</div><div class="node-split"><div class="node"><small>02A / основной</small><strong>HTTPS-цели</strong><span>Группы LOCAL / FOREIGN</span></div><div class="node"><small>02B / дополнительный</small><strong>DNS-проверки</strong><span>UDP / TCP / системный resolver</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="node result"><small>03 / результат</small><strong>Наблюдаемое состояние</strong><span>Классификатор + локальная история</span></div></div><div class="note"><strong>!</strong><span>
 Прокси и VPN намеренно не используются в основном маршруте проверки:
 они могут изменить измеряемый путь и сделать прямую диагностику мобильной сети недостоверной.
 </span></div></section><section id="screenshots" class="section shell"><div class="section-head"><div><p class="eyebrow">&gt; интерфейс</p><h2>Экраны приложения</h2></div><p>
 Это актуальные скриншоты из репозитория проекта.
 </p></div><div class="screens"><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран"></div><figcaption><span>01</span><strong>Главный экран</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика"></div><figcaption><span>02</span><strong>Статистика</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-sites.jpg" alt="Настройки проверок сайтов"></div><figcaption><span>03</span><strong>Проверки сайтов</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS"></div><figcaption><span>04</span><strong>DNS</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/background-checks.jpg" alt="Фоновые проверки"></div><figcaption><span>05</span><strong>Фоновые проверки</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/active-monitoring.jpg" alt="Активный мониторинг"></div><figcaption><span>06</span><strong>Активный мониторинг</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/local-notifications.jpg" alt="Локальные уведомления"></div><figcaption><span>07</span><strong>Уведомления</strong></figcaption></figure></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">$ архитектура</p><h2>Архитектура приложения</h2></div><p>
-Приложение использует MVVM, отдельные сценарии использования (use cases) и ручной composition root AppContainer.
+Приложение использует MVVM, отдельные сценарии использования (use cases) и явную сборку зависимостей через AppContainer.
 Логика проверки, хранение данных и классификация вынесены из Compose-компонентов.
 </p></div><div class="architecture"><div class="arch-layer"><strong>UI</strong><p>
 Jetpack Compose + Material 3, MainViewModel и AppUpdateViewModel.
@@ -962,11 +962,11 @@ WorkManager используется для периодических пров�
 </p></div></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">$ инженерные_решения</p><h2>Инженерные решения</h2></div><p>
 Эти ограничения являются частью дизайна продукта, а не отсутствующими функциями.
 </p></div><div class="challenge-grid"><article class="challenge"><span class="challenge-tag">Изоляция мобильной сети</span><h3>Не привязывать весь процесс к мобильным данным</h3><p>
-Модуль проверки получает отдельный Android Network для мобильной сети и создаёт через него DNS/HTTPS-трафик.
-Глобальная для процесса привязка bindProcessToNetwork намеренно не используется.
-</p></article><article class="challenge"><span class="challenge-tag">Классификация</span><h3>Не считать DNS всей диагностикой</h3><p>
+Модуль проверки получает отдельный объект Android Network для мобильного соединения и создаёт через него DNS/HTTPS-трафик.
+Привязка всего процесса через bindProcessToNetwork намеренно не используется.
+</p></article><article class="challenge"><span class="challenge-tag">Классификация</span><h3>Не сводить диагностику к DNS</h3><p>
 Проверки сайтов являются основным сигналом. DNS остаётся дополнительным, поэтому сбои отдельных публичных
-DNS-резолверов не должны формировать вводящее в заблуждение общее состояние.
+DNS-резолверов не должны определять итоговый статус приложения.
 </p></article><article class="challenge"><span class="challenge-tag">Достоверность измерения</span><h3>Без прокси/VPN в маршруте проверки</h3><p>
 Прокси или туннель меняет измеряемый путь. Поддержка такого транспорта в основном модуле проверки
 противоречила бы цели прямой диагностики мобильной сети.
@@ -982,15 +982,15 @@ WorkManager выполняет запланированные периодиче
 </p></article></div></section><section id="technical" class="section shell"><div class="technical"><div class="panel tech-panel"><p class="eyebrow">&gt; технологии</p><h2>Технологический стек</h2><div class="tech-list"><div class="tech-row"><strong>Kotlin</strong><span>приложение</span></div><div class="tech-row"><strong>JDK 17</strong><span>сборка</span></div><div class="tech-row"><strong>Jetpack Compose + Material 3</strong><span>UI</span></div><div class="tech-row"><strong>MVVM + use cases</strong><span>архитектура</span></div><div class="tech-row"><strong>Coroutines + Flow</strong><span>асинхронное состояние</span></div><div class="tech-row"><strong>Room schema 8</strong><span>история</span></div><div class="tech-row"><strong>DataStore Preferences</strong><span>настройки</span></div><div class="tech-row"><strong>WorkManager</strong><span>фоновые задачи</span></div><div class="tech-row"><strong>Foreground Service</strong><span>активный мониторинг</span></div><div class="tech-row"><strong>OkHttp</strong><span>HTTPS</span></div><div class="tech-row"><strong>ConnectivityManager</strong><span>маршрутизация</span></div></div></div><div class="panel privacy-panel"><p class="eyebrow">&gt; приватность</p><span class="privacy-badge">LOCAL-FIRST</span><h2>Для основной функциональности центральный сервис не требуется.</h2><p>
 Начиная с v1.0.0 старый центральный публичный сервис проекта удалён.
 Проверки, история и статистика остаются на устройстве.
-</p><ul class="check-list"><li>История проверок хранится локально</li><li>Статистика хранится локально</li><li>Обязательный аккаунт не нужен</li><li>Нет центральной серверной инфраструктуры проекта для диагностики</li><li>Проверка обновлений не отправляет историю или настройки</li><li>Личная интеграция с Telegram необязательна и принадлежит пользователю</li></ul><div class="actions"><a class="button"
+</p><ul class="check-list"><li>История проверок хранится локально</li><li>Статистика хранится локально</li><li>Обязательный аккаунт не нужен</li><li>Нет центральной серверной инфраструктуры проекта для диагностики</li><li>Проверка обновлений не отправляет историю или настройки</li><li>Личная интеграция с Telegram необязательна и управляется самим пользователем</li></ul><div class="actions"><a class="button"
 href="https://github.com/Regstar2/white-list-checker/blob/main/PRIVACY.md"
 target="_blank"
 rel="noreferrer">
 Политика приватности ↗
 </a></div></div></div></section><section class="section shell"><div class="technical"><div class="panel security-panel"><p class="eyebrow">&gt; безопасность</p><span class="security-badge">ГРАНИЦЫ БЕЗОПАСНОСТИ</span><h2>Диагностика без отключения проверок безопасности TLS.</h2><p>
 HTTPS-проверки сохраняют обычную проверку TLS-сертификата и имени хоста.
-APK не содержит GitHub PAT/OAuth-токен с правами записи или Telegram BOT_TOKEN.
-</p><ul class="check-list"><li>Проверка TLS-сертификата остаётся включённой</li><li>Проверка имени хоста остаётся включённой</li><li>Нет GitHub PAT/OAuth-секрета в APK</li><li>Нет Telegram BOT_TOKEN в APK</li><li>Release keystore и учётные данные не хранятся в Git</li><li>Обратная связь открывает публичные формы GitHub Issues</li></ul><div class="actions"><a class="button"
+APK не содержит GitHub PAT/OAuth-токена с правами записи и не содержит Telegram BOT_TOKEN.
+</p><ul class="check-list"><li>Проверка TLS-сертификата остаётся включённой</li><li>Проверка имени хоста остаётся включённой</li><li>Нет GitHub PAT/OAuth-секрета в APK</li><li>Нет Telegram BOT_TOKEN в APK</li><li>Ключ подписи релизов и учётные данные не хранятся в Git</li><li>Обратная связь открывает публичные формы GitHub Issues</li></ul><div class="actions"><a class="button"
 href="https://github.com/Regstar2/white-list-checker/blob/main/SECURITY.md"
 target="_blank"
 rel="noreferrer">

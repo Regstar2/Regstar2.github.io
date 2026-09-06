@@ -32,10 +32,14 @@ const siteHeader = menuToggle?.closest('.site-header');
 const siteNav = document.querySelector('[data-menu]');
 
 if (menuToggle && siteHeader && siteNav) {
+  const isRussian = document.documentElement.lang.toLowerCase().startsWith('ru');
+  const openLabel = isRussian ? 'Открыть навигацию' : 'Open navigation';
+  const closeLabel = isRussian ? 'Закрыть навигацию' : 'Close navigation';
+
   const setMenuOpen = (open) => {
     siteHeader.classList.toggle('menu-open', open);
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    menuToggle.setAttribute('aria-label', open ? closeLabel : openLabel);
   };
 
   menuToggle.addEventListener('click', () => {

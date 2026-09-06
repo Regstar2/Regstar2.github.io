@@ -1,285 +1,1003 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#5C3A9E">
-  <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="WhiteListChecker — Android-приложение для диагностики мобильной сети и обнаружения признаков режима белых списков.">
-  <meta property="og:title" content="WhiteListChecker — Regstar">
-  <meta property="og:description" content="Диагностика мобильной сети, DNS/HTTPS-проверки, мониторинг и статистика.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://regstar2.github.io/projects/white-list-checker/">
-  <meta property="og:image" content="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg">
-  <title>WhiteListChecker — Regstar</title>
-
-  <link rel="icon" href="../../favicon.ico" sizes="any">
-  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../project.css">
-</head>
-<body class="project-page">
-  <div class="page-glow page-glow-left" aria-hidden="true"></div>
-  <div class="page-glow page-glow-right" aria-hidden="true"></div>
-
-  <header class="project-header project-shell">
-    <a class="brand" href="../../" aria-label="Regstar home">REGSTAR</a>
-    <nav class="project-nav" aria-label="Project navigation">
-      <a href="#overview">Overview</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#contact">Contact</a>
-      <a class="project-nav-github" href="https://github.com/Regstar2/white-list-checker" target="_blank" rel="noreferrer">GitHub ↗</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="project-hero project-shell">
-      <div class="project-hero-copy">
-        <a class="project-breadcrumb" href="../../#projects">← projects / white-list-checker</a>
-
-        <div class="project-identity">
-          <img class="project-logo" src="../../assets/projects/white-list-checker.png" alt="WhiteListChecker">
-          <span class="project-status">Stable · v1.0.0</span>
-        </div>
-
-        <p class="code-label">&gt; android.network_diagnostics</p>
-        <h1>WhiteList<br>Checker</h1>
-        <p class="project-lead">Диагностика мобильной сети и обнаружение признаков режима белых списков.</p>
-        <p class="project-summary">Проверяет доступность ресурсов именно через cellular-сеть, сопоставляет HTTPS и DNS-сигналы, сохраняет историю и помогает увидеть изменение состояния сети во времени.</p>
-
-        <div class="project-actions">
-          <a class="button button-primary project-download" href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/WhiteListChecker-v1.0.0-release.apk">Скачать v1.0.0</a>
-          <a class="button button-secondary" href="https://github.com/Regstar2/white-list-checker" target="_blank" rel="noreferrer">Исходный код ↗</a>
-        </div>
-
-        <div class="project-tags hero-tags" aria-label="Technologies">
-          <span>Android</span>
-          <span>Kotlin</span>
-          <span>Jetpack Compose</span>
-          <span>Room</span>
-        </div>
-      </div>
-
-      <div class="phone-stage" aria-label="WhiteListChecker screenshots">
-        <div class="phone phone-back phone-left">
-          <img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика WhiteListChecker">
-        </div>
-        <div class="phone phone-back phone-right">
-          <img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS WhiteListChecker">
-        </div>
-        <div class="phone phone-main">
-          <img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран WhiteListChecker">
-        </div>
-        <div class="stage-orbit orbit-one" aria-hidden="true"></div>
-        <div class="stage-orbit orbit-two" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <section class="project-facts">
-      <div class="project-shell facts-grid">
-        <div><span>Platform</span><strong>Android 8+</strong></div>
-        <div><span>Release</span><strong>v1.0.0</strong></div>
-        <div><span>License</span><strong>MIT</strong></div>
-        <div><span>Data model</span><strong>Local-first</strong></div>
-      </div>
-    </section>
-
-    <section id="overview" class="project-section project-shell">
-      <div class="project-section-heading">
-        <div>
-          <p class="code-label">$ overview</p>
-          <h2>Что делает приложение</h2>
-        </div>
-        <p>Не пытается «узнать правила оператора». Вместо этого измеряет наблюдаемое поведение мобильной сети и показывает, на каком уровне возникает проблема.</p>
-      </div>
-
-      <div class="feature-grid">
-        <article class="feature-card feature-card-wide">
-          <span class="feature-index">01</span>
-          <div class="feature-icon">CELL</div>
-          <h3>Проверка через мобильную сеть</h3>
-          <p>Получает отдельный cellular Network через Android ConnectivityManager. Wi-Fi при этом можно оставить включённым.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">02</span>
-          <div class="feature-icon">DNS</div>
-          <h3>DNS-диагностика</h3>
-          <p>UDP/53, TCP fallback, пользовательские resolver и системный cellular resolver.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">03</span>
-          <div class="feature-icon">TLS</div>
-          <h3>HTTPS targets</h3>
-          <p>Проверяет группы LOCAL и FOREIGN через network-bound сокеты с обычной TLS-проверкой.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">04</span>
-          <div class="feature-icon">MON</div>
-          <h3>Мониторинг</h3>
-          <p>Фоновые проверки через WorkManager и активный мониторинг через foreground service.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">05</span>
-          <div class="feature-icon">LOG</div>
-          <h3>История и статистика</h3>
-          <p>Room-хранилище, timeline и экспорт накопленных данных в CSV, JSON или TXT.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">06</span>
-          <div class="feature-icon">NTF</div>
-          <h3>Уведомления</h3>
-          <p>Локальные Android-уведомления и опциональная личная Telegram-интеграция.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="project-section project-shell">
-      <div class="project-section-heading compact">
-        <div>
-          <p class="code-label">&gt; signal_pipeline</p>
-          <h2>Как формируется результат</h2>
-        </div>
-      </div>
-
-      <div class="pipeline" role="img" aria-label="Cellular Network flows to HTTPS and DNS checks and then to classification">
-        <div class="pipeline-node pipeline-primary">
-          <span>01</span>
-          <strong>Cellular Network</strong>
-          <small>Android network binding</small>
-        </div>
-        <div class="pipeline-arrow" aria-hidden="true">→</div>
-        <div class="pipeline-split">
-          <div class="pipeline-node">
-            <span>02A</span>
-            <strong>HTTPS</strong>
-            <small>LOCAL / FOREIGN</small>
-          </div>
-          <div class="pipeline-node">
-            <span>02B</span>
-            <strong>DNS</strong>
-            <small>Resolver diagnostics</small>
-          </div>
-        </div>
-        <div class="pipeline-arrow" aria-hidden="true">→</div>
-        <div class="pipeline-node pipeline-result">
-          <span>03</span>
-          <strong>Classification</strong>
-          <small>Наблюдаемое состояние</small>
-        </div>
-      </div>
-
-      <p class="project-note"><span>!</span> Результат — диагностическая оценка по наблюдаемым сетевым признакам, а не доказательство наличия у оператора конкретного режима фильтрации.</p>
-    </section>
-
-    <section id="screenshots" class="project-section screenshots-section">
-      <div class="project-shell">
-        <div class="project-section-heading">
-          <div>
-            <p class="code-label">$ screenshots</p>
-            <h2>Интерфейс</h2>
-          </div>
-          <p>Один и тот же набор экранов используется для ручной проверки, настройки диагностики и долговременного мониторинга.</p>
-        </div>
-      </div>
-
-      <div class="screenshot-rail" aria-label="WhiteListChecker screenshots">
-        <figure class="screenshot-card screenshot-featured">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Главный экран"></div>
-          <figcaption><span>01</span><strong>Главный экран</strong></figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Статистика"></div>
-          <figcaption><span>02</span><strong>Статистика</strong></figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-sites.jpg" alt="Настройки сайтов"></div>
-          <figcaption><span>03</span><strong>Сайты</strong></figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="Настройки DNS"></div>
-          <figcaption><span>04</span><strong>DNS</strong></figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/background-checks.jpg" alt="Фоновые проверки"></div>
-          <figcaption><span>05</span><strong>Фоновые проверки</strong></figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/active-monitoring.jpg" alt="Активный мониторинг"></div>
-          <figcaption><span>06</span><strong>Мониторинг</strong></figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <div class="screenshot-phone"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/local-notifications.jpg" alt="Локальные уведомления"></div>
-          <figcaption><span>07</span><strong>Уведомления</strong></figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="project-section project-shell">
-      <div class="project-two-column">
-        <div class="tech-panel">
-          <p class="code-label">&gt; technology</p>
-          <h2>Стек</h2>
-          <div class="tech-list">
-            <div><strong>Kotlin</strong><span>application</span></div>
-            <div><strong>Jetpack Compose</strong><span>UI</span></div>
-            <div><strong>Room</strong><span>history</span></div>
-            <div><strong>WorkManager</strong><span>background</span></div>
-            <div><strong>ConnectivityManager</strong><span>cellular routing</span></div>
-            <div><strong>GitHub Releases</strong><span>updates</span></div>
-          </div>
-        </div>
-
-        <div class="privacy-panel">
-          <p class="code-label">&gt; privacy</p>
-          <span class="privacy-badge">LOCAL-FIRST</span>
-          <h2>Данные остаются на устройстве</h2>
-          <p>История проверок, статистика и основная конфигурация хранятся локально. Центральный project-owned сервис для основной функциональности не требуется.</p>
-          <a href="https://github.com/Regstar2/white-list-checker/blob/main/PRIVACY.md" target="_blank" rel="noreferrer">Privacy policy ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section project-shell" aria-labelledby="project-contact-title">
-      <div class="contact-card">
-        <div class="contact-copy">
-          <p class="code-label">&gt; contact</p>
-          <h2 id="project-contact-title">Связаться</h2>
-          <p>Ошибки и предложения лучше фиксировать публично в GitHub Issues. Для остальных вопросов используйте email.</p>
-        </div>
-        <div class="contact-actions">
-          <a class="contact-link" href="https://github.com/Regstar2/white-list-checker/issues" target="_blank" rel="noreferrer">
-            <span>Ошибки и предложения</span>
-            <strong>GitHub Issues ↗</strong>
-          </a>
-          <a class="contact-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=regstar02@gmail.com" target="_blank" rel="noreferrer">
-            <span>Другие вопросы</span>
-            <strong>regstar02@gmail.com</strong>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="project-cta project-shell">
-      <img src="../../assets/projects/white-list-checker.png" alt="" aria-hidden="true">
-      <p class="code-label">$ install --stable</p>
-      <h2>Проверить мобильную сеть</h2>
-      <p>Стабильный релиз v1.0.0 · Android 8.0+ · MIT</p>
-      <div class="project-actions project-actions-center">
-        <a class="button button-primary project-download" href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/WhiteListChecker-v1.0.0-release.apk">Скачать APK</a>
-        <a class="button button-secondary" href="https://github.com/Regstar2/white-list-checker/releases/tag/v1.0.0" target="_blank" rel="noreferrer">Release notes ↗</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="project-footer project-shell">
-    <a class="brand" href="../../">REGSTAR</a>
-    <div class="project-footer-contacts" aria-label="Contacts">
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=regstar02@gmail.com" target="_blank" rel="noreferrer">regstar02@gmail.com</a>
-      <a href="https://github.com/Regstar2" target="_blank" rel="noreferrer">github.com/Regstar2 ↗</a>
-    </div>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090a0e"><meta name="description" content="WhiteListChecker — Android application for diagnosing mobile network accessibility and observable signs of whitelist-mode restrictions."><meta property="og:title" content="WhiteListChecker — Regstar"><meta property="og:description" content="Android mobile network diagnostics with cellular-bound HTTPS/DNS checks, local history and monitoring."><meta property="og:type" content="website"><meta property="og:image" content="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg"><meta name="twitter:card" content="summary_large_image"><title>WhiteListChecker — Regstar</title><style>
+:root {
+color-scheme: dark;
+--bg: #090a0e;
+--panel: #101218;
+--panel-2: #151821;
+--panel-3: #1a1e29;
+--text: #f5f7fa;
+--soft: #c9ced8;
+--muted: #969daa;
+--dim: #6f7682;
+--line: rgba(255,255,255,.08);
+--line-strong: rgba(255,255,255,.14);
+--accent: #8b5cf6;
+--accent-2: #b8a4ff;
+--green: #8ef0b0;
+--yellow: #f6d675;
+--max: 1220px;
+--radius: 24px;
+}
+* { box-sizing: border-box; }
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 24px;
+}
+body {
+margin: 0;
+min-width: 320px;
+background:
+radial-gradient(circle at 12% 8%, rgba(139,92,246,.11), transparent 28rem),
+radial-gradient(circle at 88% 30%, rgba(91,137,255,.055), transparent 28rem),
+var(--bg);
+color: var(--text);
+font-family:
+Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+"Segoe UI", sans-serif;
+line-height: 1.5;
+}
+body::before {
+content: "";
+position: fixed;
+inset: 0;
+z-index: -1;
+pointer-events: none;
+opacity: .2;
+background-image:
+linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+background-size: 48px 48px;
+mask-image: linear-gradient(to bottom, #000 0, transparent 75%);
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+a:focus-visible {
+outline: 2px solid var(--accent-2);
+outline-offset: 4px;
+}
+.shell {
+width: min(calc(100% - 48px), var(--max));
+margin-inline: auto;
+}
+.header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+min-height: 78px;
+border-bottom: 1px solid var(--line);
+}
+.brand {
+font-weight: 800;
+letter-spacing: .14em;
+font-size: .96rem;
+}
+.nav {
+display: flex;
+align-items: center;
+gap: 24px;
+color: var(--muted);
+font-size: .9rem;
+}
+.nav a:hover { color: var(--text); }
+.button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 44px;
+padding: 0 16px;
+border: 1px solid var(--line-strong);
+border-radius: 12px;
+background: rgba(255,255,255,.025);
+color: var(--text);
+font-weight: 700;
+font-size: .9rem;
+transition: transform .16s ease, background .16s ease;
+}
+.button:hover {
+transform: translateY(-1px);
+background: rgba(255,255,255,.05);
+}
+.button.primary {
+border-color: transparent;
+background: var(--accent);
+}
+.button.primary:hover { background: #7c3aed; }
+.eyebrow {
+margin: 0 0 16px;
+color: var(--accent-2);
+font: 600 .72rem/1.2 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+letter-spacing: .09em;
+}
+.breadcrumb {
+display: inline-flex;
+margin-bottom: 30px;
+color: var(--dim);
+font-size: .86rem;
+}
+.hero {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(500px, .9fr);
+gap: clamp(44px, 5vw, 68px);
+align-items: center;
+min-height: 700px;
+padding-block: 68px 84px;
+}
+.identity {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 26px;
+}
+.app-icon {
+width: 62px;
+height: 62px;
+border-radius: 17px;
+object-fit: contain;
+box-shadow: 0 14px 34px rgba(0,0,0,.34);
+}
+.status {
+display: inline-flex;
+align-items: center;
+min-height: 30px;
+padding: 0 10px;
+border: 1px solid rgba(142,240,176,.18);
+border-radius: 999px;
+background: rgba(142,240,176,.07);
+color: var(--green);
+font: 600 .68rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+letter-spacing: .06em;
+}
+.hero h1 {
+margin: 0;
+max-width: 100%;
+font-size: clamp(3.7rem, 4.9vw, 4.65rem);
+line-height: .9;
+letter-spacing: -.065em;
+white-space: nowrap;
+}
+.lead {
+max-width: 720px;
+margin: 30px 0 0;
+color: var(--soft);
+font-size: clamp(1.26rem, 2.1vw, 1.62rem);
+line-height: 1.42;
+letter-spacing: -.02em;
+}
+.summary {
+max-width: 680px;
+margin: 18px 0 0;
+color: var(--muted);
+line-height: 1.72;
+}
+.tags,
+.actions {
+display: flex;
+flex-wrap: wrap;
+gap: 9px;
+}
+.tags { margin-top: 24px; }
+.actions { margin-top: 32px; }
+.tag {
+display: inline-flex;
+align-items: center;
+min-height: 30px;
+padding: 0 10px;
+border: 1px solid var(--line);
+border-radius: 999px;
+color: var(--muted);
+font: 500 .69rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.hero-visual {
+position: relative;
+z-index: 2;
+min-height: 560px;
+perspective: 1400px;
+}
+.visual-glow {
+position: absolute;
+inset: 10% 4% 6%;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(139,92,246,.18), transparent 64%);
+filter: blur(44px);
+}
+.phone {
+position: absolute;
+overflow: hidden;
+border: 1px solid var(--line-strong);
+background: #0d0f15;
+border-radius: 32px;
+box-shadow: 0 30px 90px rgba(0,0,0,.48);
+}
+.phone img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: top;
+}
+.phone.main {
+z-index: 3;
+left: 50%;
+top: 0;
+width: 264px;
+height: 528px;
+transform: translateX(-50%) rotateY(-4deg);
+}
+.phone.left,
+.phone.right {
+z-index: 1;
+top: 68px;
+width: 204px;
+height: 408px;
+opacity: .68;
+}
+.phone.left {
+left: 0;
+transform: rotateY(17deg) rotateZ(-7deg);
+}
+.phone.right {
+right: 0;
+transform: rotateY(-17deg) rotateZ(7deg);
+}
+.fact-strip {
+border-block: 1px solid var(--line);
+background: rgba(16,18,24,.6);
+}
+.facts {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+}
+.fact {
+min-height: 112px;
+padding: 25px 24px;
+border-right: 1px solid var(--line);
+}
+.fact:first-child { border-left: 1px solid var(--line); }
+.fact span {
+display: block;
+margin-bottom: 8px;
+color: var(--dim);
+font: 500 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+}
+.fact strong {
+font-size: 1.04rem;
+letter-spacing: -.015em;
+}
+.section {
+padding-block: 108px;
+}
+.section + .section { padding-top: 28px; }
+.section-head {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(300px, .58fr);
+gap: 48px;
+align-items: end;
+margin-bottom: 38px;
+}
+.section-head h2 {
+margin: 0;
+font-size: clamp(2.7rem, 5vw, 4.65rem);
+line-height: .96;
+letter-spacing: -.058em;
+}
+.section-head > p {
+margin: 0;
+color: var(--muted);
+line-height: 1.72;
+}
+.split {
+display: grid;
+grid-template-columns: repeat(2, minmax(0,1fr));
+gap: 16px;
+}
+.panel {
+border: 1px solid var(--line);
+border-radius: var(--radius);
+background:
+linear-gradient(145deg, rgba(21,24,33,.94), rgba(13,15,21,.96));
+}
+.story-card {
+min-height: 340px;
+padding: 34px;
+}
+.story-card h3,
+.feature-card h3,
+.challenge h3 {
+margin: 0;
+letter-spacing: -.035em;
+}
+.story-card h3 { font-size: 1.8rem; }
+.story-card p {
+margin: 16px 0 0;
+color: var(--muted);
+line-height: 1.72;
+}
+.story-card.problem {
+background:
+radial-gradient(circle at 88% 10%, rgba(246,214,117,.08), transparent 42%),
+linear-gradient(145deg, rgba(24,25,29,.94), rgba(14,15,19,.96));
+}
+.story-card.solution {
+background:
+radial-gradient(circle at 88% 10%, rgba(139,92,246,.15), transparent 42%),
+linear-gradient(145deg, rgba(22,24,34,.94), rgba(14,15,21,.96));
+}
+.story-number {
+display: block;
+margin-bottom: 56px;
+color: var(--dim);
+font: 500 .72rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 14px;
+}
+.feature-card {
+position: relative;
+min-height: 300px;
+padding: 28px;
+border: 1px solid var(--line);
+border-radius: var(--radius);
+background: rgba(16,18,24,.78);
+}
+.feature-index {
+position: absolute;
+top: 24px;
+right: 25px;
+color: #5e6672;
+font: 500 .68rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.feature-icon {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 56px;
+height: 40px;
+padding: 0 10px;
+border: 1px solid rgba(184,164,255,.17);
+border-radius: 11px;
+background: rgba(139,92,246,.06);
+color: var(--accent-2);
+font: 600 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.feature-card h3 {
+margin-top: 72px;
+font-size: 1.35rem;
+}
+.feature-card p {
+margin: 12px 0 0;
+color: var(--muted);
+font-size: .94rem;
+line-height: 1.65;
+}
+.pipeline {
+display: grid;
+grid-template-columns: 1fr auto 1.15fr auto 1fr;
+align-items: center;
+gap: 18px;
+padding: 28px;
+border: 1px solid var(--line);
+border-radius: 28px;
+background: rgba(14,16,22,.82);
+}
+.node {
+min-height: 152px;
+padding: 23px;
+border: 1px solid var(--line);
+border-radius: 18px;
+background: #12151d;
+}
+.node.primary {
+border-color: rgba(139,92,246,.32);
+background: rgba(139,92,246,.09);
+}
+.node.result {
+border-color: rgba(142,240,176,.22);
+background: rgba(142,240,176,.045);
+}
+.node small {
+display: block;
+margin-bottom: 26px;
+color: var(--dim);
+font: 500 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+}
+.node strong {
+display: block;
+font-size: 1.12rem;
+}
+.node span {
+display: block;
+margin-top: 5px;
+color: var(--muted);
+font-size: .88rem;
+}
+.node-split {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+.arrow {
+color: #6c7481;
+font: 500 1.35rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.note {
+display: flex;
+gap: 12px;
+margin-top: 16px;
+padding: 16px 18px;
+border: 1px solid var(--line);
+border-radius: 14px;
+color: var(--muted);
+font-size: .87rem;
+line-height: 1.55;
+}
+.note strong {
+color: var(--yellow);
+font-family: "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.screens {
+display: grid;
+grid-template-columns: repeat(4, minmax(0,1fr));
+gap: 16px;
+}
+figure { margin: 0; }
+.shot {
+overflow: hidden;
+border: 1px solid var(--line);
+border-radius: 24px;
+background: #0e1016;
+box-shadow: 0 24px 60px rgba(0,0,0,.24);
+}
+.shot img {
+width: 100%;
+aspect-ratio: 1 / 2;
+object-fit: cover;
+object-position: top;
+}
+figcaption {
+display: flex;
+align-items: baseline;
+gap: 10px;
+margin-top: 13px;
+}
+figcaption span {
+color: var(--dim);
+font: 500 .66rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+figcaption strong { font-size: .9rem; }
+.challenge-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0,1fr));
+gap: 14px;
+}
+.challenge {
+padding: 28px;
+border: 1px solid var(--line);
+border-radius: var(--radius);
+background: rgba(16,18,24,.76);
+}
+.challenge h3 { font-size: 1.3rem; }
+.challenge p {
+margin: 11px 0 0;
+color: var(--muted);
+line-height: 1.64;
+font-size: .94rem;
+}
+.challenge .challenge-tag {
+display: inline-block;
+margin-bottom: 44px;
+color: var(--accent-2);
+font: 600 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+}
+.technical {
+display: grid;
+grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+gap: 16px;
+}
+.tech-panel,
+.privacy-panel,
+.security-panel {
+padding: 34px;
+min-height: 500px;
+}
+.tech-panel h2,
+.privacy-panel h2,
+.security-panel h2,
+.release-card h2 {
+margin: 0;
+font-size: clamp(2.3rem, 4vw, 3.5rem);
+line-height: .98;
+letter-spacing: -.052em;
+}
+.tech-list {
+margin-top: 44px;
+border-top: 1px solid var(--line);
+}
+.tech-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 22px;
+min-height: 56px;
+border-bottom: 1px solid var(--line);
+}
+.tech-row span {
+color: var(--dim);
+font: 500 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.privacy-panel {
+position: relative;
+overflow: hidden;
+background:
+radial-gradient(circle at 85% 8%, rgba(142,240,176,.10), transparent 40%),
+linear-gradient(145deg, rgba(20,27,30,.92), rgba(13,15,20,.97));
+}
+.privacy-badge,
+.security-badge {
+display: inline-flex;
+margin: 30px 0 24px;
+min-height: 30px;
+align-items: center;
+padding: 0 10px;
+border-radius: 999px;
+font: 600 .68rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.privacy-badge {
+border: 1px solid rgba(142,240,176,.18);
+background: rgba(142,240,176,.06);
+color: var(--green);
+}
+.security-badge {
+border: 1px solid rgba(184,164,255,.18);
+background: rgba(139,92,246,.07);
+color: var(--accent-2);
+}
+.privacy-panel p:not(.eyebrow),
+.security-panel p:not(.eyebrow) {
+max-width: 520px;
+margin: 24px 0 0;
+color: var(--muted);
+line-height: 1.72;
+}
+.check-list {
+margin: 28px 0 0;
+padding: 0;
+list-style: none;
+}
+.check-list li {
+display: flex;
+gap: 10px;
+padding: 9px 0;
+color: var(--soft);
+font-size: .92rem;
+}
+.check-list li::before {
+content: "✓";
+color: var(--green);
+font-family: "Cascadia Code","JetBrains Mono",Consolas,monospace;
+}
+.architecture {
+display: grid;
+gap: 12px;
+padding: 30px;
+border: 1px solid var(--line);
+border-radius: 28px;
+background: rgba(14,16,22,.82);
+}
+.arch-layer {
+display: grid;
+grid-template-columns: 180px minmax(0, 1fr);
+gap: 22px;
+padding: 20px;
+border: 1px solid var(--line);
+border-radius: 16px;
+background: rgba(255,255,255,.018);
+}
+.arch-layer > strong {
+color: var(--accent-2);
+font: 600 .72rem/1.4 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+}
+.arch-layer p {
+margin: 0;
+color: var(--muted);
+line-height: 1.62;
+}
+.release-card {
+display: grid;
+grid-template-columns: minmax(0,1fr) minmax(360px,.62fr);
+gap: 34px;
+padding: 42px;
+border: 1px solid var(--line);
+border-radius: 28px;
+background:
+radial-gradient(circle at 82% 0%, rgba(139,92,246,.18), transparent 40%),
+linear-gradient(145deg, #171a24, #0e1016);
+}
+.release-card p:not(.eyebrow) {
+max-width: 680px;
+margin: 18px 0 0;
+color: var(--muted);
+line-height: 1.7;
+}
+.release-meta {
+display: grid;
+gap: 10px;
+align-content: center;
+}
+.release-meta div {
+display: flex;
+justify-content: space-between;
+gap: 20px;
+padding: 13px 0;
+border-bottom: 1px solid var(--line);
+}
+.release-meta span {
+color: var(--dim);
+font-size: .82rem;
+}
+.release-meta strong {
+text-align: right;
+font-size: .88rem;
+overflow-wrap: anywhere;
+}
+.hash {
+margin-top: 22px;
+padding: 16px 18px;
+border: 1px solid var(--line);
+border-radius: 14px;
+background: rgba(0,0,0,.18);
+}
+.hash span {
+display: block;
+margin-bottom: 8px;
+color: var(--dim);
+font: 500 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+}
+.hash code {
+color: var(--soft);
+font: 500 .76rem/1.55 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+overflow-wrap: anywhere;
+}
+.project-links {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 14px;
+}
+.link-card {
+min-height: 160px;
+padding: 24px;
+border: 1px solid var(--line);
+border-radius: 18px;
+background: rgba(16,18,24,.75);
+}
+.link-card span {
+display: block;
+margin-bottom: 30px;
+color: var(--dim);
+font: 500 .67rem/1 "Cascadia Code","JetBrains Mono",Consolas,monospace;
+text-transform: uppercase;
+}
+.link-card strong {
+display: block;
+font-size: 1.05rem;
+}
+.link-card small {
+display: block;
+margin-top: 6px;
+color: var(--muted);
+}
+.footer {
+display: grid;
+grid-template-columns: minmax(0, 1fr) auto;
+gap: 34px;
+align-items: center;
+min-height: 150px;
+padding-block: 30px;
+border-top: 1px solid var(--line);
+color: var(--muted);
+font-size: .82rem;
+}
+.footer-main {
+display: grid;
+gap: 10px;
+}
+.footer-main .brand {
+width: fit-content;
+color: var(--text);
+}
+.footer-main p {
+max-width: 650px;
+margin: 0;
+line-height: 1.6;
+}
+.footer-links {
+display: grid;
+gap: 9px;
+justify-items: end;
+text-align: right;
+}
+.footer-links a {
+color: var(--soft);
+}
+.footer-links a:hover {
+color: var(--text);
+}
+.footer-links small {
+color: var(--dim);
+line-height: 1.5;
+}
+@media (max-width: 1240px) and (min-width: 1081px) {
+.hero {
+grid-template-columns: minmax(0, 1fr) minmax(455px, .82fr);
+gap: 38px;
+}
+.hero h1 {
+font-size: clamp(3.45rem, 4.7vw, 4rem);
+}
+.phone.main {
+width: 246px;
+height: 492px;
+}
+.phone.left,
+.phone.right {
+width: 186px;
+height: 372px;
+}
+}
+@media (max-width: 1080px) {
+.hero,
+.technical {
+grid-template-columns: 1fr;
+}
+.hero-visual {
+width: min(100%, 670px);
+margin-inline: auto;
+}
+.feature-grid { grid-template-columns: repeat(2, 1fr); }
+.screens { grid-template-columns: repeat(3, 1fr); }
+.pipeline { grid-template-columns: 1fr; }
+.arrow { transform: rotate(90deg); justify-self: center; }
+.project-links { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 780px) {
+.shell { width: min(calc(100% - 30px), var(--max)); }
+.header { min-height: 72px; }
+.nav a:not(.button) { display: none; }
+.hero {
+min-height: 0;
+padding-block: 50px 66px;
+gap: 26px;
+}
+.hero h1 {
+font-size: clamp(3.4rem, 14vw, 5rem);
+white-space: normal;
+}
+.hero-visual {
+min-height: 480px;
+transform: scale(.88);
+transform-origin: top center;
+margin-bottom: -55px;
+}
+.facts { grid-template-columns: repeat(2, 1fr); }
+.fact { border-bottom: 1px solid var(--line); }
+.fact:first-child { border-left: 0; }
+.fact:nth-child(odd) { border-left: 1px solid var(--line); }
+.section { padding-block: 78px; }
+.section + .section { padding-top: 18px; }
+.section-head,
+.split,
+.challenge-grid,
+.release-card {
+grid-template-columns: 1fr;
+}
+.feature-grid { grid-template-columns: 1fr; }
+.screens { grid-template-columns: repeat(2, 1fr); }
+.arch-layer {
+grid-template-columns: 1fr;
+gap: 8px;
+}
+.footer {
+grid-template-columns: 1fr;
+align-items: start;
+gap: 22px;
+}
+.footer-links {
+justify-items: start;
+text-align: left;
+}
+}
+@media (max-width: 520px) {
+.hero-visual {
+min-height: 420px;
+transform: scale(.74);
+width: 128%;
+margin-inline: -14%;
+margin-bottom: -120px;
+}
+.screens {
+grid-template-columns: 1fr;
+max-width: 320px;
+margin-inline: auto;
+}
+.project-links { grid-template-columns: 1fr; }
+.actions .button {
+width: 100%;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
+* { transition-duration: .01ms !important; }
+}
+</style></head><body><header class="header shell"><a class="brand" href="../../">REGSTAR</a><nav class="nav" aria-label="Project navigation"><a href="#overview">Overview</a><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#technical">Technical</a><a class="button" href="https://github.com/Regstar2/white-list-checker" target="_blank" rel="noreferrer">
+GitHub ↗
+</a></nav></header><main><section class="hero shell"><div><a class="breadcrumb" href="../../#projects">← All projects</a><div class="identity"><img
+class="app-icon"
+src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+alt="WhiteListChecker icon"><span class="status">Stable · v1.0.0</span></div><p class="eyebrow">&gt; android / mobile network diagnostics</p><h1>WhiteListChecker</h1><p class="lead">
+Diagnose mobile network accessibility and observable signs of whitelist-mode restrictions.
+</p><p class="summary">
+WhiteListChecker runs checks through an explicitly acquired cellular Network,
+even when Wi-Fi remains the phone's default connection. It combines HTTPS reachability
+with DNS diagnostics, stores results locally and monitors changes over time.
+</p><div class="tags"><span class="tag">Android 8+</span><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Room</span><span class="tag">RU / EN</span><span class="tag">MIT</span></div><div class="actions"><a class="button primary"
+href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/WhiteListChecker-v1.0.0-release.apk">
+Download APK
+</a><a class="button"
+href="https://github.com/Regstar2/white-list-checker/releases/tag/v1.0.0"
+target="_blank"
+rel="noreferrer">
+Release notes ↗
+</a><a class="button"
+href="https://github.com/Regstar2/white-list-checker"
+target="_blank"
+rel="noreferrer">
+Source code ↗
+</a></div></div><div class="hero-visual" aria-label="WhiteListChecker interface"><div class="visual-glow"></div><div class="phone left"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="WhiteListChecker statistics"></div><div class="phone main"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="WhiteListChecker home screen"></div><div class="phone right"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="WhiteListChecker DNS settings"></div></div></section><section class="fact-strip"><div class="facts shell"><div class="fact"><span>Platform</span><strong>Android 8+</strong></div><div class="fact"><span>Release</span><strong>v1.0.0</strong></div><div class="fact"><span>Published</span><strong>25 Aug 2026</strong></div><div class="fact"><span>Data model</span><strong>Local-first</strong></div><div class="fact"><span>License</span><strong>MIT</strong></div></div></section><section id="overview" class="section shell"><div class="section-head"><div><p class="eyebrow">$ context</p><h2>What the app measures</h2></div><p>
+WhiteListChecker does not have access to an operator's internal filtering rules.
+It reports observable network behavior and deliberately avoids presenting the result
+as proof of a specific operator-side mechanism.
+</p></div><div class="split"><article class="panel story-card problem"><span class="story-number">01 / problem</span><h3>A failed request alone does not explain why a resource is unreachable.</h3><p>
+The cause can be routing, DNS, TLS, temporary connectivity loss, a VPN or tunnel,
+device configuration, or network-side filtering. A single “works / does not work”
+check is not enough for a useful diagnosis.
+</p></article><article class="panel story-card solution"><span class="story-number">02 / approach</span><h3>Measure the direct cellular path using several independent signals.</h3><p>
+The app acquires a separate cellular Network, runs network-bound HTTPS and DNS checks,
+keeps DNS as secondary diagnostics, then stores the resulting state locally for
+history, statistics and monitoring.
+</p></article></div></section><section id="features" class="section shell"><div class="section-head"><div><p class="eyebrow">&gt; capabilities</p><h2>Core capabilities</h2></div><p>
+The stable release focuses on direct cellular diagnostics without requiring a
+project-owned backend or account.
+</p></div><div class="feature-grid"><article class="feature-card"><span class="feature-index">01</span><div class="feature-icon">CELL</div><h3>Explicit cellular routing</h3><p>
+Uses ConnectivityManager.requestNetwork(...) to obtain TRANSPORT_CELLULAR without
+process-wide bindProcessToNetwork.
+</p></article><article class="feature-card"><span class="feature-index">02</span><div class="feature-icon">HTTPS</div><h3>Network-bound site checks</h3><p>
+Checks editable LOCAL and FOREIGN target groups through the acquired cellular Network
+with normal TLS certificate and hostname verification.
+</p></article><article class="feature-card"><span class="feature-index">03</span><div class="feature-icon">DNS</div><h3>DNS diagnostics</h3><p>
+Supports editable resolvers, UDP/53, TCP/53 fallback and cellular hostname resolution.
+DNS remains a supporting signal rather than the sole classifier.
+</p></article><article class="feature-card"><span class="feature-index">04</span><div class="feature-icon">DATA</div><h3>History and statistics</h3><p>
+Room stores check history, per-target results, statistics and whitelist timeline.
+Data can be exported to CSV, JSON or TXT.
+</p></article><article class="feature-card"><span class="feature-index">05</span><div class="feature-icon">MON</div><h3>Background and active monitoring</h3><p>
+Scheduled checks use WorkManager, while explicitly started continuous monitoring
+uses a foreground service.
+</p></article><article class="feature-card"><span class="feature-index">06</span><div class="feature-icon">NTF</div><h3>Notifications</h3><p>
+Supports local Android notifications and an optional personal Telegram flow through
+a user-owned Cloudflare Worker and Telegram bot.
+</p></article><article class="feature-card"><span class="feature-index">07</span><div class="feature-icon">UPD</div><h3>Update discovery</h3><p>
+Checks official GitHub Releases asynchronously, filters stable/prerelease versions
+and lets the user open the official release page.
+</p></article><article class="feature-card"><span class="feature-index">08</span><div class="feature-icon">ISSUE</div><h3>Built-in feedback</h3><p>
+Bug report and feature request actions open GitHub Issue Forms without embedding
+a GitHub PAT or OAuth write credential in the APK.
+</p></article><article class="feature-card"><span class="feature-index">09</span><div class="feature-icon">I18N</div><h3>Russian and English UI</h3><p>
+User-facing dialogs, notifications, accessibility descriptions and errors are
+localized through Android resources.
+</p></article></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">$ signal_pipeline</p><h2>How classification works</h2></div><p>
+Site reachability is the primary classification signal. DNS availability is secondary,
+so one unavailable public resolver does not automatically become a mobile DNS failure.
+</p></div><div class="pipeline" role="img" aria-label="Cellular Network flows to HTTPS and DNS diagnostics, then to classification"><div class="node primary"><small>01 / transport</small><strong>Cellular Network</strong><span>Explicit Android Network</span></div><div class="arrow" aria-hidden="true">→</div><div class="node-split"><div class="node"><small>02A / primary</small><strong>HTTPS targets</strong><span>LOCAL / FOREIGN groups</span></div><div class="node"><small>02B / secondary</small><strong>DNS probes</strong><span>UDP / TCP / cellular resolver</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="node result"><small>03 / output</small><strong>Observed state</strong><span>Classifier + local history</span></div></div><div class="note"><strong>!</strong><span>
+Proxy and VPN transports are intentionally not part of the checker path:
+they can change the route being measured and make direct cellular diagnostics unreliable.
+</span></div></section><section id="screenshots" class="section shell"><div class="section-head"><div><p class="eyebrow">&gt; interface</p><h2>Application screens</h2></div><p>
+These are current screenshots from the project's own repository.
+</p></div><div class="screens"><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/home.jpg" alt="Main screen"></div><figcaption><span>01</span><strong>Main</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/statistics.jpg" alt="Statistics"></div><figcaption><span>02</span><strong>Statistics</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-sites.jpg" alt="Site check settings"></div><figcaption><span>03</span><strong>Site checks</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/check-dns.jpg" alt="DNS settings"></div><figcaption><span>04</span><strong>DNS</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/background-checks.jpg" alt="Background checks"></div><figcaption><span>05</span><strong>Background checks</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/active-monitoring.jpg" alt="Active monitoring"></div><figcaption><span>06</span><strong>Active monitoring</strong></figcaption></figure><figure><div class="shot"><img src="https://raw.githubusercontent.com/Regstar2/white-list-checker/main/docs/assets/screenshots/local-notifications.jpg" alt="Local notifications"></div><figcaption><span>07</span><strong>Notifications</strong></figcaption></figure></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">$ architecture</p><h2>Runtime architecture</h2></div><p>
+The app uses MVVM with domain use cases and a manual AppContainer composition root.
+Checker logic, persistence and classification stay outside Compose UI components.
+</p></div><div class="architecture"><div class="arch-layer"><strong>UI</strong><p>
+Jetpack Compose + Material 3, MainViewModel and AppUpdateViewModel.
+</p></div><div class="arch-layer"><strong>Domain</strong><p>
+WhitelistCheckUseCase, CheckAndNotifyUseCase, CheckForAppUpdateUseCase and
+WhitelistStateClassifier.
+</p></div><div class="arch-layer"><strong>Network</strong><p>
+CellularNetworkProvider, MobileSiteChecker, CellularDnsResolver and OkHttp
+with the cellular Network socket factory where required.
+</p></div><div class="arch-layer"><strong>Persistence</strong><p>
+Room schema 8 for history/statistics/timeline and DataStore Preferences for
+application, checker, notification and monitoring settings.
+</p></div><div class="arch-layer"><strong>Background</strong><p>
+WorkManager for periodic checks and ActiveMonitoringService for explicitly
+started foreground monitoring.
+</p></div><div class="arch-layer"><strong>Optional integrations</strong><p>
+Public GitHub Releases API for update discovery and a user-owned Cloudflare Worker
+for personal Telegram integration.
+</p></div></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">$ engineering</p><h2>Engineering decisions</h2></div><p>
+These constraints are part of the product design, not missing features.
+</p></div><div class="challenge-grid"><article class="challenge"><span class="challenge-tag">Cellular isolation</span><h3>Do not bind the whole process to mobile data</h3><p>
+The checker obtains a dedicated cellular Network and creates DNS/HTTPS traffic
+through it. Process-wide bindProcessToNetwork is intentionally not used.
+</p></article><article class="challenge"><span class="challenge-tag">Classification</span><h3>Do not treat DNS as the whole diagnosis</h3><p>
+Site checks are the primary signal. DNS remains secondary so failures of public
+resolvers do not create misleading overall states.
+</p></article><article class="challenge"><span class="challenge-tag">Measurement integrity</span><h3>No proxy or VPN transport inside the checker</h3><p>
+A proxy or tunnel changes the path being measured. Supporting it as a checker
+transport would undermine the purpose of direct cellular diagnostics.
+</p></article><article class="challenge"><span class="challenge-tag">Local-first migration</span><h3>Remove the old central service without destroying user history</h3><p>
+Room schema 8 removes the obsolete pending_public_reports table through migration
+7 → 8 while preserving history, statistics, targets and settings.
+</p></article><article class="challenge"><span class="challenge-tag">Background execution</span><h3>Use the Android execution model appropriate to the user's intent</h3><p>
+WorkManager handles scheduled periodic work. Foreground Service is reserved for
+active monitoring explicitly started by the user.
+</p></article><article class="challenge"><span class="challenge-tag">Update delivery</span><h3>Discover updates without implementing silent self-update</h3><p>
+The app checks public GitHub Releases, filters prereleases and opens the official
+release page. APK download and installation remain under user and Android control.
+</p></article></div></section><section id="technical" class="section shell"><div class="technical"><div class="panel tech-panel"><p class="eyebrow">&gt; technology</p><h2>Technology stack</h2><div class="tech-list"><div class="tech-row"><strong>Kotlin</strong><span>application</span></div><div class="tech-row"><strong>JDK 17</strong><span>build</span></div><div class="tech-row"><strong>Jetpack Compose + Material 3</strong><span>UI</span></div><div class="tech-row"><strong>MVVM + use cases</strong><span>architecture</span></div><div class="tech-row"><strong>Coroutines + Flow</strong><span>async state</span></div><div class="tech-row"><strong>Room schema 8</strong><span>history</span></div><div class="tech-row"><strong>DataStore Preferences</strong><span>settings</span></div><div class="tech-row"><strong>WorkManager</strong><span>background</span></div><div class="tech-row"><strong>Foreground Service</strong><span>active monitoring</span></div><div class="tech-row"><strong>OkHttp</strong><span>HTTPS</span></div><div class="tech-row"><strong>ConnectivityManager</strong><span>cellular routing</span></div></div></div><div class="panel privacy-panel"><p class="eyebrow">&gt; privacy</p><span class="privacy-badge">LOCAL-FIRST</span><h2>No central service is required for core functionality.</h2><p>
+Since v1.0.0, the old project-owned central/public service has been removed.
+Checks, history and statistics stay on the device.
+</p><ul class="check-list"><li>Check history stays local</li><li>Statistics stay local</li><li>No mandatory account</li><li>No project-owned central backend for diagnostics</li><li>Update checks do not upload history or settings</li><li>Personal Telegram is optional and user-owned</li></ul><div class="actions"><a class="button"
+href="https://github.com/Regstar2/white-list-checker/blob/main/PRIVACY.md"
+target="_blank"
+rel="noreferrer">
+Privacy policy ↗
+</a></div></div></div></section><section class="section shell"><div class="technical"><div class="panel security-panel"><p class="eyebrow">&gt; security</p><span class="security-badge">SECURITY BOUNDARIES</span><h2>Diagnostics without weakening transport security.</h2><p>
+HTTPS target checks keep normal TLS certificate and hostname verification.
+The APK does not contain a GitHub PAT/OAuth write token or Telegram BOT_TOKEN.
+</p><ul class="check-list"><li>TLS certificate verification remains enabled</li><li>Hostname verification remains enabled</li><li>No GitHub PAT/OAuth secret in APK</li><li>No Telegram BOT_TOKEN in APK</li><li>Release keystore and credentials stay outside Git</li><li>Feedback opens public GitHub Issue Forms</li></ul><div class="actions"><a class="button"
+href="https://github.com/Regstar2/white-list-checker/blob/main/SECURITY.md"
+target="_blank"
+rel="noreferrer">
+Security policy ↗
+</a></div></div><div class="panel tech-panel"><p class="eyebrow">&gt; build target</p><h2>Android baseline</h2><div class="tech-list"><div class="tech-row"><strong>minSdk</strong><span>26</span></div><div class="tech-row"><strong>compileSdk</strong><span>35</span></div><div class="tech-row"><strong>targetSdk</strong><span>35</span></div><div class="tech-row"><strong>versionCode</strong><span>26</span></div><div class="tech-row"><strong>versionName</strong><span>1.0.0</span></div><div class="tech-row"><strong>Release artifact</strong><span>APK</span></div><div class="tech-row"><strong>Languages</strong><span>RU / EN</span></div></div></div></div></section><section class="section shell"><div class="release-card"><div><p class="eyebrow">$ stable_release</p><h2>WhiteListChecker v1.0.0</h2><p>
+The first stable release was published on 25 August 2026.
+The official APK and checksum file are distributed through GitHub Releases.
+</p><div class="actions"><a class="button primary"
+href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/WhiteListChecker-v1.0.0-release.apk">
+Download APK
+</a><a class="button"
+href="https://github.com/Regstar2/white-list-checker/releases/download/v1.0.0/SHA256SUMS.txt">
+SHA256SUMS.txt
+</a><a class="button"
+href="https://github.com/Regstar2/white-list-checker/releases/tag/v1.0.0"
+target="_blank"
+rel="noreferrer">
+Release page ↗
+</a></div><div class="hash"><span>APK SHA-256</span><code>53EE6B90AA3D2FB5A928519E3F6B411DD4572E1C2EE45519797449C4F3EB3ED3</code></div></div><div class="release-meta"><div><span>Version</span><strong>1.0.0</strong></div><div><span>Published</span><strong>25 Aug 2026</strong></div><div><span>APK</span><strong>WhiteListChecker-v1.0.0-release.apk</strong></div><div><span>Size</span><strong>9,972,068 bytes</strong></div><div><span>Channel</span><strong>Stable</strong></div><div><span>Updates</span><strong>GitHub Releases</strong></div></div></div></section><section class="section shell"><div class="section-head"><div><p class="eyebrow">&gt; project links</p><h2>Development and documentation</h2></div><p>
+GitHub remains the source of truth for code, releases, issues and technical documentation.
+</p></div><div class="project-links"><a class="link-card"
+href="https://github.com/Regstar2/white-list-checker"
+target="_blank"
+rel="noreferrer"><span>Source</span><strong>Repository ↗</strong><small>Code and development history</small></a><a class="link-card"
+href="https://github.com/Regstar2/white-list-checker/releases"
+target="_blank"
+rel="noreferrer"><span>Distribution</span><strong>Releases ↗</strong><small>Stable builds and release notes</small></a><a class="link-card"
+href="https://github.com/Regstar2/white-list-checker/issues"
+target="_blank"
+rel="noreferrer"><span>Feedback</span><strong>Issues ↗</strong><small>Bug reports and feature requests</small></a><a class="link-card"
+href="https://github.com/Regstar2/white-list-checker/tree/main/docs"
+target="_blank"
+rel="noreferrer"><span>Technical</span><strong>Documentation ↗</strong><small>Architecture, testing and update delivery</small></a></div></section></main><footer class="footer shell"><div class="footer-main"><a class="brand" href="../../">REGSTAR</a><p>
+Software projects focused on Windows, Android, networking and practical utilities.
+Bugs and feature requests for WhiteListChecker are best tracked in its GitHub repository.
+</p></div><div class="footer-links" aria-label="Contact links"><a href="https://github.com/Regstar2" target="_blank" rel="noreferrer">
+GitHub · @Regstar2 ↗
+</a><a href="mailto:regstar02@gmail.com">
+regstar02@gmail.com
+</a><small>General questions and collaboration</small></div></footer></body></html>

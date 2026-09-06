@@ -166,6 +166,41 @@ img {
   color: var(--muted-strong) !important;
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(17, 19, 34, 0.7);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.lang-switch a,
+.lang-switch span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 7px;
+  color: var(--muted);
+}
+
+.lang-switch .active {
+  background: rgba(92, 58, 158, 0.24);
+  color: #c4afe8;
+}
+
+.lang-switch a:hover {
+  background: var(--surface-raised);
+  color: var(--text);
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
@@ -459,6 +494,27 @@ img {
   font-size: 0.72rem;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 22px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.project-links a {
+  color: var(--muted-strong);
+}
+
+.project-links a:first-child {
+  color: var(--code);
+}
+
+.project-links a:hover {
+  color: var(--text);
+}
+
 
 .contact-section {
   padding: 10px 0 104px;
@@ -667,6 +723,18 @@ img {
   .site-nav a {
     padding: 12px 14px;
     border-radius: 10px;
+  }
+
+  .lang-switch {
+    align-self: stretch;
+    justify-content: flex-start;
+    margin: 4px 8px;
+    width: fit-content;
+  }
+
+  .lang-switch a,
+  .lang-switch span {
+    padding: 0 10px;
   }
 
   .site-nav a:hover {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://regstar2.github.io/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regstar2.github.io/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://regstar2.github.io/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/" />
+  </url>
+  <url>
+    <loc>https://regstar2.github.io/ru/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regstar2.github.io/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://regstar2.github.io/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/" />
+  </url>
+  <url>
+    <loc>https://regstar2.github.io/projects/white-list-checker/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regstar2.github.io/projects/white-list-checker/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://regstar2.github.io/projects/white-list-checker/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/projects/white-list-checker/" />
+  </url>
+  <url>
+    <loc>https://regstar2.github.io/projects/white-list-checker/ru/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regstar2.github.io/projects/white-list-checker/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://regstar2.github.io/projects/white-list-checker/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/projects/white-list-checker/" />
+  </url>
+</urlset>

@@ -312,8 +312,8 @@ img {
 }
 
 .cat-frame-small {
+  top: 0;
   right: -22px;
-  bottom: 0;
   width: 142px;
   height: 142px;
   border: 5px solid var(--bg);

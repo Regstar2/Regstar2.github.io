@@ -30,7 +30,9 @@
     .wsp-flow div{padding:14px 16px;border:1px solid var(--border);border-radius:13px;background:rgba(255,255,255,.025);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.82rem;color:var(--muted-strong)}
     .wsp-flow span{color:var(--code)}
     .credits-line{color:var(--muted);line-height:1.8}
+    .wsp-title{line-height:.95;text-wrap:balance;overflow-wrap:anywhere}
     @media(max-width:1050px){.wsp-visual{min-height:0}}
+    @media(max-width:760px){.wsp-title{line-height:1}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Telegram-WSP","applicationCategory":"CommunicationApplication","operatingSystem":"Android 5.0 or later","softwareVersion":"12.10.1-wsp.1","datePublished":"2026-09-09","downloadUrl":"https://github.com/Regstar2/telegram-wsp/releases/latest/download/Telegram-WSP-release.apk","license":"https://www.gnu.org/licenses/gpl-3.0.html","isBasedOn":"https://github.com/DrKLO/Telegram","author":{"@type":"Person","name":"Regstar","url":"https://github.com/Regstar2"},"sameAs":["https://github.com/Regstar2/telegram-wsp","https://github.com/Regstar2/tgwsproxy-core","https://github.com/amurcanov/tg-ws-proxy-android","https://github.com/Flowseal/tg-ws-proxy"],"offers":{"@type":"Offer","price":0},"url":"https://regstar2.github.io/projects/telegram-wsp/","inLanguage":"en","description":"Unofficial Telegram for Android fork with built-in TgWsProxy, minimal upstream changes, verified updates and automated releases."}</script>
 </head>
@@ -56,7 +58,7 @@
           <span class="project-status">MVP · v12.10.1-wsp.1</span>
         </div>
         <p class="code-label">&gt; android / telegram fork / proxy</p>
-        <h1>Telegram-WSP</h1>
+        <h1 class="wsp-title">Telegram-WSP</h1>
         <p class="project-lead">Telegram for Android with TgWsProxy integrated directly into the client.</p>
         <p class="project-summary">The project keeps Telegram as close to upstream as possible: TgWsProxy runs behind a localhost proxy, Telegram's tgnet remains untouched, and the integration is applied as a small reproducible overlay.</p>
         <div class="hero-tags project-tags"><span>Android</span><span>Kotlin</span><span>Go</span><span>Maintained fork</span><span>GPL-3.0</span></div>

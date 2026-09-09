@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090a0e">
+  <meta name="description" content="Telegram-WSP — unofficial Telegram for Android fork with built-in TgWsProxy, minimal upstream changes, verified updates and automated releases.">
+  <link rel="canonical" href="https://regstar2.github.io/projects/telegram-wsp/">
+  <link rel="alternate" hreflang="en" href="https://regstar2.github.io/projects/telegram-wsp/">
+  <link rel="alternate" hreflang="ru" href="https://regstar2.github.io/projects/telegram-wsp/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/projects/telegram-wsp/">
+  <meta property="og:title" content="Telegram-WSP — Telegram with built-in TgWsProxy">
+  <meta property="og:description" content="Unofficial Telegram for Android fork with built-in TgWsProxy, minimal upstream changes and automated signed releases.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://regstar2.github.io/projects/telegram-wsp/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Regstar2/telegram-wsp/main/integration/branding/res/drawable-nodpi/tgwsproxy_launcher_source.png">
+  <meta name="twitter:card" content="summary">
+  <title>Telegram-WSP — Telegram with built-in TgWsProxy</title>
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../project.css">
+  <style>
+    .project-page{--project-accent:#5c3a9e;--project-highlight:#7dffb3}
+    .project-status{border-color:rgba(239,193,93,.2);background:rgba(210,153,34,.12);color:#efc15d}
+    .wsp-visual{display:grid;align-content:center;gap:20px;min-height:470px;padding:38px;border:1px solid var(--border);border-radius:30px;background:radial-gradient(circle at 50% 20%,rgba(92,58,158,.28),transparent 44%),linear-gradient(145deg,rgba(23,26,48,.94),rgba(13,15,28,.95))}
+    .wsp-logo{width:150px;height:150px;margin:0 auto;object-fit:contain;border-radius:34px;box-shadow:0 30px 70px rgba(0,0,0,.36)}
+    .wsp-flow{display:grid;gap:10px;margin-top:18px}
+    .wsp-flow div{padding:14px 16px;border:1px solid var(--border);border-radius:13px;background:rgba(255,255,255,.025);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.82rem;color:var(--muted-strong)}
+    .wsp-flow span{color:var(--code)}
+    .credits-line{color:var(--muted);line-height:1.8}
+    @media(max-width:1050px){.wsp-visual{min-height:0}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Telegram-WSP","applicationCategory":"CommunicationApplication","operatingSystem":"Android 5.0 or later","softwareVersion":"12.10.1-wsp.1","datePublished":"2026-09-09","downloadUrl":"https://github.com/Regstar2/telegram-wsp/releases/latest/download/Telegram-WSP-release.apk","license":"https://www.gnu.org/licenses/gpl-3.0.html","isBasedOn":"https://github.com/DrKLO/Telegram","author":{"@type":"Person","name":"Regstar","url":"https://github.com/Regstar2"},"sameAs":["https://github.com/Regstar2/telegram-wsp","https://github.com/Regstar2/tgwsproxy-core","https://github.com/amurcanov/tg-ws-proxy-android","https://github.com/Flowseal/tg-ws-proxy"],"offers":{"@type":"Offer","price":0},"url":"https://regstar2.github.io/projects/telegram-wsp/","inLanguage":"en","description":"Unofficial Telegram for Android fork with built-in TgWsProxy, minimal upstream changes, verified updates and automated releases."}</script>
+</head>
+<body class="project-page">
+  <header class="project-header project-shell">
+    <a class="brand" href="../../">REGSTAR</a>
+    <nav class="project-nav" aria-label="Project navigation">
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#updates">Updates</a>
+      <div class="lang-switch" aria-label="Language"><span class="active" aria-current="page">EN</span><a href="ru/" lang="ru" hreflang="ru">RU</a></div>
+      <a class="project-nav-github" href="https://github.com/Regstar2/telegram-wsp" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-hero project-shell">
+      <div class="project-hero-copy">
+        <a class="project-breadcrumb" href="../../#projects">← All projects</a>
+        <div class="project-identity">
+          <img class="project-logo" src="https://raw.githubusercontent.com/Regstar2/telegram-wsp/main/integration/branding/res/drawable-nodpi/tgwsproxy_launcher_source.png" alt="Telegram-WSP icon">
+          <span class="project-status">MVP · v12.10.1-wsp.1</span>
+        </div>
+        <p class="code-label">&gt; android / telegram fork / proxy</p>
+        <h1>Telegram-WSP</h1>
+        <p class="project-lead">Telegram for Android with TgWsProxy integrated directly into the client.</p>
+        <p class="project-summary">The project keeps Telegram as close to upstream as possible: TgWsProxy runs behind a localhost proxy, Telegram's tgnet remains untouched, and the integration is applied as a small reproducible overlay.</p>
+        <div class="hero-tags project-tags"><span>Android</span><span>Kotlin</span><span>Go</span><span>Maintained fork</span><span>GPL-3.0</span></div>
+        <div class="project-actions">
+          <a class="button button-primary project-download" href="https://github.com/Regstar2/telegram-wsp/releases/latest/download/Telegram-WSP-release.apk">Download APK</a>
+          <a class="button button-secondary" href="https://github.com/Regstar2/telegram-wsp/releases" target="_blank" rel="noreferrer">Releases ↗</a>
+          <a class="button button-secondary" href="https://github.com/Regstar2/telegram-wsp" target="_blank" rel="noreferrer">Source code ↗</a>
+        </div>
+      </div>
+      <div class="wsp-visual" aria-label="Telegram-WSP integration overview">
+        <img class="wsp-logo" src="https://raw.githubusercontent.com/Regstar2/telegram-wsp/main/integration/branding/res/drawable-nodpi/tgwsproxy_launcher_source.png" alt="Telegram-WSP launcher icon">
+        <div class="wsp-flow">
+          <div><span>01</span> Telegram Android upstream</div>
+          <div><span>02</span> minimal Telegram-WSP overlay</div>
+          <div><span>03</span> localhost MTProto proxy · 127.0.0.1:1443</div>
+          <div><span>04</span> tgwsproxy-core · WebSocket / Cloudflare routes</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-facts">
+      <div class="facts-grid project-shell">
+        <div><span>Stage</span><strong>MVP</strong></div>
+        <div><span>Telegram upstream</span><strong>12.10.1 · build 7038</strong></div>
+        <div><span>Package</span><strong>org.telegram.messenger.web</strong></div>
+        <div><span>Release</span><strong>v12.10.1-wsp.1</strong></div>
+      </div>
+    </section>
+
+    <section id="overview" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; approach</p><h2>Minimal changes to original Telegram</h2></div>
+        <p>The integration deliberately avoids replacing Telegram networking. The current source-level overlay changes only five upstream files and does not modify <code>TMessagesProj/jni/tgnet/</code>.</p>
+      </div>
+      <div class="project-two-column">
+        <article class="tech-panel"><p class="code-label">01 / integration</p><h2>Proxy behind the official proxy API</h2><p class="credits-line">Telegram-WSP starts <code>tgwsproxy-core</code> locally and configures <code>127.0.0.1:1443</code> through Telegram's normal proxy API. Telegram itself does not need to know how the external WebSocket transport is implemented.</p></article>
+        <article class="privacy-panel"><p class="code-label">02 / branding</p><span class="privacy-badge">UNOFFICIAL FORK</span><h2>Distinct name, icon, package and signing key.</h2><p>Telegram's published requirements ask third-party apps not to use the standard Telegram logo and to avoid presenting themselves as the official app. Telegram-WSP therefore uses its own branding and explicitly identifies itself as unofficial.</p><a href="https://github.com/DrKLO/Telegram#creating-your-telegram-application" target="_blank" rel="noreferrer">Telegram requirements ↗</a></article>
+      </div>
+    </section>
+
+    <section id="features" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; implemented</p><h2>Core capabilities</h2></div>
+        <p>The current MVP focuses on the integrated proxy path, reproducible Telegram updates, release integrity and keeping the fork maintainable.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-index">01</span><span class="feature-icon">WSP</span><h3>Built-in TgWsProxy</h3><p>No separate proxy application is required for the normal Telegram-WSP flow.</p></article>
+        <article class="feature-card"><span class="feature-index">02</span><span class="feature-icon">LOCAL</span><h3>Local MTProto listener</h3><p>The embedded runtime listens on 127.0.0.1:1443 and is connected through Telegram's existing proxy API.</p></article>
+        <article class="feature-card"><span class="feature-index">03</span><span class="feature-icon">DIFF</span><h3>Small upstream diff</h3><p>The overlay is intentionally narrow to reduce merge conflicts when Telegram publishes a new Android version.</p></article>
+        <article class="feature-card"><span class="feature-index">04</span><span class="feature-icon">REL</span><h3>Automated signed releases</h3><p>GitHub Actions builds the full APK, signs it with the persistent project key and publishes release metadata and corresponding source.</p></article>
+        <article class="feature-card"><span class="feature-index">05</span><span class="feature-icon">UPD</span><h3>Verified app updates</h3><p>The client checks GitHub Releases and validates SHA-256, package ID and signing certificate before handing the APK to Android.</p></article>
+        <article class="feature-card"><span class="feature-index">06</span><span class="feature-icon">SYNC</span><h3>Telegram upstream sync</h3><p>A scheduled workflow checks DrKLO/Telegram daily and releases a new WSP build only after the overlay and CI gates succeed.</p></article>
+      </div>
+    </section>
+
+    <section id="architecture" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">$ architecture</p><h2>Integration boundary</h2></div>
+        <p>Telegram remains the application and networking layer. The custom transport is isolated behind its localhost proxy endpoint.</p>
+      </div>
+      <div class="pipeline">
+        <div class="pipeline-node"><span>01 / client</span><strong>Telegram-WSP</strong><small>Telegram Android + small overlay</small></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-node pipeline-primary"><span>02 / localhost</span><strong>127.0.0.1:1443</strong><small>Telegram proxy API boundary</small></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-node pipeline-result"><span>03 / transport</span><strong>tgwsproxy-core</strong><small>cf_proxy_ws · direct_ws · cf_worker_ws · tcp_fallback</small></div>
+      </div>
+    </section>
+
+    <section id="updates" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; automation</p><h2>Telegram updates become WSP releases automatically</h2></div>
+        <p>The pipeline separates upstream detection from user updates so an incompatible Telegram version is never treated as a valid WSP release merely because it exists upstream.</p>
+      </div>
+      <div class="project-two-column">
+        <article class="tech-panel"><p class="code-label">UPSTREAM → WSP</p><h2>Daily compatibility gate</h2><div class="tech-list"><div><strong>DrKLO/Telegram</strong><span>daily check</span></div><div><strong>config/upstream.json</strong><span>pinned commit</span></div><div><strong>Overlay reproduction</strong><span>clean upstream</span></div><div><strong>CI gates</strong><span>required</span></div><div><strong>GitHub Release</strong><span>only after success</span></div></div></article>
+        <article class="privacy-panel"><p class="code-label">WSP → DEVICE</p><span class="privacy-badge">VERIFIED UPDATE</span><h2>The installed app follows Telegram-WSP releases.</h2><p>The updater reads <code>latest.json</code>, checks that the new versionCode is newer, downloads the APK and verifies its digest, package ID and signing certificate. Android still requires the user to confirm installation.</p><a href="https://github.com/Regstar2/telegram-wsp/blob/main/.github/workflows/upstream-sync.yml" target="_blank" rel="noreferrer">Upstream workflow ↗</a></article>
+      </div>
+    </section>
+
+    <section class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; provenance</p><h2>Proxy runtime lineage</h2></div>
+        <p>The embedded core was extracted from the maintained Android fork, which itself descends from amurcanov's Android wrapper and Flowseal's original TgWsProxy runtime.</p>
+      </div>
+      <div class="pipeline">
+        <div class="pipeline-node"><span>origin</span><strong>Flowseal/tg-ws-proxy</strong><small>original WebSocket runtime</small></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-node pipeline-primary"><span>android lineage</span><strong>amurcanov → Regstar2</strong><small>tg-ws-proxy-android forks</small></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-node pipeline-result"><span>embedded core</span><strong>Regstar2/tgwsproxy-core</strong><small>reusable Android/native runtime</small></div>
+      </div>
+    </section>
+
+    <section class="project-cta project-shell">
+      <img src="https://raw.githubusercontent.com/Regstar2/telegram-wsp/main/integration/branding/res/drawable-nodpi/tgwsproxy_launcher_source.png" alt="Telegram-WSP icon">
+      <p class="code-label">$ current_release</p>
+      <h2>Telegram-WSP v12.10.1-wsp.1</h2>
+      <p>Android 5.0+ · unofficial fork · built and distributed through GitHub Releases.</p>
+      <div class="project-actions project-actions-center">
+        <a class="button button-primary project-download" href="https://github.com/Regstar2/telegram-wsp/releases/latest/download/Telegram-WSP-release.apk">Download APK</a>
+        <a class="button button-secondary" href="https://github.com/Regstar2/telegram-wsp/releases/tag/v12.10.1-wsp.1" target="_blank" rel="noreferrer">Release notes ↗</a>
+        <a class="button button-secondary" href="https://github.com/Regstar2/telegram-wsp" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer project-shell">
+    <span>Telegram-WSP is an independent unofficial fork and is not affiliated with or endorsed by Telegram.</span>
+    <div class="project-footer-contacts"><a href="https://github.com/Regstar2/telegram-wsp" target="_blank" rel="noreferrer">GitHub · Telegram-WSP ↗</a><span>Updated · 9 Sep 2026</span></div>
+  </footer>
+</body>
+</html>

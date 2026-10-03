@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090a12">
+  <meta name="description" content="NotifyMark — Android app for local reminders from Markdown tasks with calendar, recurrence, SAF sources and write-back to the source file.">
+  <link rel="canonical" href="https://regstar2.github.io/projects/notify-mark/">
+  <link rel="alternate" hreflang="en" href="https://regstar2.github.io/projects/notify-mark/">
+  <link rel="alternate" hreflang="ru" href="https://regstar2.github.io/projects/notify-mark/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/projects/notify-mark/">
+  <meta property="og:title" content="NotifyMark — Markdown Reminders for Android">
+  <meta property="og:description" content="NotifyMark — Android app for local reminders from Markdown tasks with calendar, recurrence, SAF sources and write-back to the source file.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://regstar2.github.io/projects/notify-mark/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Regstar2/notify-mark/main/docs/assets/icon-transparent.png">
+  <meta name="twitter:card" content="summary">
+  <title>NotifyMark — Markdown Reminders for Android</title>
+  <style>
+:root{color-scheme:dark;--bg:#090a12;--panel:#111322;--panel2:#171a30;--text:#f6f6ff;--soft:#c9cbea;--muted:#a3a6c5;--dim:#737896;--line:#262b49;--line2:#3a4169;--accent:#7c5cff;--accent2:#9fe7ff;--green:#7dffb3;--yellow:#f1cf75;--max:1180px;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;min-width:320px;background:radial-gradient(circle at 12% 8%,rgba(124,92,255,.15),transparent 30rem),radial-gradient(circle at 88% 30%,rgba(159,231,255,.06),transparent 32rem),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,#000 0,transparent 76%)}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}a:focus-visible{outline:2px solid var(--green);outline-offset:4px}.shell{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+.header{display:flex;align-items:center;justify-content:space-between;min-height:82px;border-bottom:1px solid rgba(255,255,255,.06)}.brand{font-weight:800;letter-spacing:.14em;font-size:.96rem}.nav{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:.9rem}.nav a:hover{color:var(--text)}.lang{display:inline-flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:10px}.lang a,.lang span{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;border-radius:7px;color:var(--muted);font:600 .68rem/1 Consolas,monospace}.lang .active{background:rgba(124,92,255,.22);color:#d6ccff}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border:1px solid var(--line2);border-radius:12px;background:rgba(255,255,255,.025);font-weight:700;font-size:.9rem;transition:transform .16s ease,background .16s ease}.button:hover{transform:translateY(-1px);background:rgba(255,255,255,.06)}.button.primary{border-color:transparent;background:var(--accent)}.button.primary:hover{background:#6c4ee8}
+.hero{display:grid;grid-template-columns:minmax(0,.96fr) minmax(400px,1.04fr);gap:clamp(44px,6vw,86px);align-items:center;min-height:690px;padding-block:64px 80px}.breadcrumb{display:inline-flex;margin-bottom:30px;color:var(--dim);font-size:.86rem}.identity{display:flex;align-items:center;gap:14px;margin-bottom:26px}.app-icon{width:68px;height:68px;border-radius:18px;object-fit:contain;padding:5px;border:1px solid var(--line2);background:#121422;box-shadow:0 14px 34px rgba(0,0,0,.34)}.status{display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid rgba(241,207,117,.23);border-radius:999px;background:rgba(241,207,117,.07);color:var(--yellow);font:600 .68rem/1 Consolas,monospace;text-transform:uppercase;letter-spacing:.06em}.eyebrow{margin:0 0 16px;color:var(--accent2);font:600 .72rem/1.2 Consolas,monospace;text-transform:uppercase;letter-spacing:.09em}.hero h1{margin:0;font-size:clamp(4rem,7vw,6.6rem);line-height:.86;letter-spacing:-.065em}.lead{max-width:700px;margin:30px 0 0;color:var(--soft);font-size:clamp(1.25rem,2.2vw,1.62rem);line-height:1.4;letter-spacing:-.02em}.summary{max-width:680px;margin:18px 0 0;color:var(--muted);line-height:1.72}.tags,.actions{display:flex;flex-wrap:wrap;gap:9px}.tags{margin-top:24px}.actions{margin-top:32px}.tag{display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font:500 .69rem/1 Consolas,monospace}
+.demo{position:relative;padding:20px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(23,26,48,.96),rgba(13,15,28,.98));box-shadow:0 34px 90px rgba(0,0,0,.38)}.demo:before{content:"";position:absolute;inset:-12% 4% 8%;z-index:-1;background:radial-gradient(circle,rgba(124,92,255,.22),transparent 66%);filter:blur(44px)}.demo-top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 2px 16px;color:var(--dim);font:500 .7rem/1 Consolas,monospace}.dotset{display:flex;gap:7px}.dotset i{width:8px;height:8px;border-radius:50%;background:#4a4f6d}.codebox{padding:23px;border:1px solid rgba(255,255,255,.07);border-radius:18px;background:#0b0d16;overflow:auto}.codebox pre{margin:0;color:#d9ddf2;font:500 .83rem/1.8 Consolas,monospace;white-space:pre-wrap}.codebox .mark{color:var(--green)}.notification{margin-top:14px;padding:18px;border:1px solid rgba(125,255,179,.13);border-radius:16px;background:rgba(125,255,179,.045)}.notification small{display:block;color:var(--green);font:600 .68rem/1 Consolas,monospace;text-transform:uppercase}.notification strong{display:block;margin-top:9px;font-size:1.05rem}.notification span{display:block;margin-top:5px;color:var(--muted);font-size:.88rem}
+.fact-strip{border-block:1px solid rgba(255,255,255,.06);background:rgba(17,19,34,.52)}.facts{display:grid;grid-template-columns:repeat(5,1fr)}.fact{min-height:112px;padding:25px 22px;border-right:1px solid rgba(255,255,255,.06)}.fact:first-child{border-left:1px solid rgba(255,255,255,.06)}.fact span{display:block;margin-bottom:8px;color:var(--dim);font:500 .67rem/1 Consolas,monospace;text-transform:uppercase}.fact strong{font-size:1rem}
+.section{padding-block:104px}.section+.section{padding-top:28px}.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.58fr);gap:48px;align-items:end;margin-bottom:38px}.section-head h2{margin:0;font-size:clamp(2.65rem,5vw,4.4rem);line-height:.96;letter-spacing:-.057em}.section-head>p{margin:0;color:var(--muted);line-height:1.72}.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{padding:32px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(23,26,48,.86),rgba(13,15,28,.92))}.panel h3{margin:0;font-size:1.55rem;letter-spacing:-.03em}.panel p{margin:15px 0 0;color:var(--muted);line-height:1.72}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{min-height:260px;padding:27px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(17,19,34,.76)}.feature code{display:inline-flex;padding:8px 10px;border:1px solid rgba(159,231,255,.15);border-radius:10px;background:rgba(159,231,255,.05);color:var(--accent2);font:600 .68rem/1 Consolas,monospace}.feature h3{margin:56px 0 10px;font-size:1.28rem;letter-spacing:-.03em}.feature p{margin:0;color:var(--muted);font-size:.94rem;line-height:1.65}
+.format{padding:28px;border:1px solid var(--line);border-radius:24px;background:#0c0e17}.format pre{margin:0;color:#d9ddf2;font:500 .86rem/1.8 Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}.format .mark{color:var(--green)}
+.tech{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:16px}.tech-list{margin-top:24px;border-top:1px solid var(--line)}.tech-row{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}.tech-row span{color:var(--dim);font:500 .68rem/1.4 Consolas,monospace}.tech-row strong{text-align:right}.privacy{background:radial-gradient(circle at 90% 5%,rgba(125,255,179,.10),transparent 42%),linear-gradient(145deg,rgba(20,27,30,.92),rgba(13,15,20,.97))}.checklist{margin:25px 0 0;padding:0;list-style:none}.checklist li{display:flex;gap:10px;padding:9px 0;color:var(--soft);font-size:.92rem}.checklist li:before{content:"✓";color:var(--green);font-family:Consolas,monospace}
+.release{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.62fr);gap:34px;padding:38px;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 82% 0%,rgba(124,92,255,.18),transparent 40%),linear-gradient(145deg,#171a30,#0e1018)}.release h2{margin:0;font-size:clamp(2.3rem,4vw,3.45rem);letter-spacing:-.05em}.release p{max-width:650px;margin:18px 0 0;color:var(--muted);line-height:1.7}.release-meta{display:grid;align-content:center}.release-meta div{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}.release-meta span{color:var(--dim);font-size:.82rem}.release-meta strong{text-align:right;font-size:.88rem;overflow-wrap:anywhere}
+.footer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:center;min-height:140px;padding-block:28px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:.82rem}.footer-links{display:flex;flex-wrap:wrap;gap:18px;justify-content:flex-end}
+@media(max-width:1000px){.hero,.tech{grid-template-columns:1fr}.feature-grid{grid-template-columns:repeat(2,1fr)}.release{grid-template-columns:1fr}}
+@media(max-width:760px){.shell{width:min(calc(100% - 30px),var(--max))}.nav>a:not(.button){display:none}.hero{min-height:0;padding-block:50px 64px}.facts{grid-template-columns:repeat(2,1fr)}.fact{border-bottom:1px solid rgba(255,255,255,.06)}.fact:first-child{border-left:0}.section{padding-block:76px}.section+.section{padding-top:18px}.section-head,.split{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr;gap:18px}.footer-links{justify-content:flex-start}}
+@media(max-width:520px){.actions .button{width:100%}.demo{padding:12px}.release{padding:26px}.hero h1{font-size:clamp(3.3rem,18vw,4.8rem)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"NotifyMark","url":"https://regstar2.github.io/projects/notify-mark/","applicationCategory":"UtilitiesApplication","operatingSystem":"Android 8.0+","softwareVersion":"0.10.1-beta.1","datePublished":"2026-10-03","downloadUrl":"https://github.com/Regstar2/notify-mark/releases/download/v0.10.1-beta.1/NotifyMark-v0.10.1-beta.1.apk","license":"https://opensource.org/license/mit","inLanguage":"en","description":"NotifyMark — Android app for local reminders from Markdown tasks with calendar, recurrence, SAF sources and write-back to the source file.","author":{"@type":"Person","name":"Regstar","url":"https://github.com/Regstar2"},"sameAs":["https://github.com/Regstar2/notify-mark"],"offers":{"@type":"Offer","price":0}}</script>
+</head>
+<body>
+<header class="header shell">
+  <a class="brand" href="../../">REGSTAR</a>
+  <nav class="nav" aria-label="Project navigation">
+    <a href="#overview">Overview</a>
+    <a href="#features">Features</a>
+    <a href="#format">Format</a>
+    <a href="#privacy">Privacy</a>
+    <div class="lang" aria-label="Language">
+      <span class="active" aria-current="page">EN</span><a href="ru/" lang="ru" hreflang="ru">RU</a>
+    </div>
+    <a class="button" href="https://github.com/Regstar2/notify-mark" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+<main>
+  <section class="hero shell">
+    <div>
+      <a class="breadcrumb" href="../../#projects">← All projects</a>
+      <div class="identity">
+        <img class="app-icon" src="https://raw.githubusercontent.com/Regstar2/notify-mark/main/docs/assets/icon-transparent.png" alt="NotifyMark icon">
+        <span class="status">Beta · v0.10.1-beta.1</span>
+      </div>
+      <p class="eyebrow">&gt; android / markdown reminders</p>
+      <h1>NotifyMark</h1>
+      <p class="lead">Local reminders for tasks that remain in your Markdown files.</p>
+      <p class="summary">The app reads built-in or Android SAF-selected Markdown storage, shows tasks in a list and calendar, schedules local notifications, and writes completion, skip, or edit changes back to the source line.</p>
+      <div class="tags">
+        <span class="tag">Android 8.0+</span><span class="tag">Java</span><span class="tag">Markdown</span><span class="tag">SAF</span><span class="tag">MIT</span>
+      </div>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/Regstar2/notify-mark/releases/download/v0.10.1-beta.1/NotifyMark-v0.10.1-beta.1.apk">Download APK</a>
+        <a class="button" href="https://github.com/Regstar2/notify-mark/releases/tag/v0.10.1-beta.1" target="_blank" rel="noreferrer">Release ↗</a>
+        <a class="button" href="https://github.com/Regstar2/notify-mark" target="_blank" rel="noreferrer">Source code ↗</a>
+      </div>
+    </div>
+    <div class="demo" aria-label="NotifyMark task example">
+      <div class="demo-top"><span>tasks.md</span><span class="dotset" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="codebox"><pre>- [ ] Prepare report <span class="mark">@due(2026-10-05 18:00)</span>
+      <span class="mark">@priority(high)</span> #study
+
+- [ ] Check backup <span class="mark">@repeat(1w)</span>
+      <span class="mark">@snooze(30m)</span></pre></div>
+      <div class="notification">
+        <small>local notification</small>
+        <strong>Prepare report</strong>
+        <span>Complete · Snooze · Skip · Open</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="fact-strip">
+    <div class="facts shell">
+      <div class="fact"><span>Platform</span><strong>Android 8.0+</strong></div>
+      <div class="fact"><span>Storage</span><strong>Markdown + SAF</strong></div>
+      <div class="fact"><span>Network</span><strong>No INTERNET permission</strong></div>
+      <div class="fact"><span>Channel</span><strong>Beta</strong></div>
+      <div class="fact"><span>UI</span><strong>Russian</strong></div>
+    </div>
+  </div>
+
+  <section class="section shell" id="overview">
+    <div class="section-head">
+      <h2>Markdown stays the source of truth.</h2>
+      <p>NotifyMark does not turn notes into a second independent task database. Current task state stays in Markdown, while local data supports scheduling, preferences, and recurrence history.</p>
+    </div>
+    <div class="split">
+      <article class="panel"><h3>Connect existing notes</h3><p>Use built-in app storage, a single Markdown file, or a folder selected through Android Storage Access Framework.</p></article>
+      <article class="panel"><h3>Schedule reminders locally</h3><p>Android alarms and notifications are scheduled on-device. Exact timing may require exact-alarm special access depending on the Android version.</p></article>
+    </div>
+  </section>
+
+  <section class="section shell" id="features">
+    <div class="section-head">
+      <h2>What is already in the beta.</h2>
+      <p>The features below reflect the published v0.10.1-beta.1 release and current project documentation.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature"><code>01</code><h3>List and calendar</h3><p>Review tasks in a regular list and calendar view.</p></article>
+      <article class="feature"><code>02</code><h3>Recurrence and snooze</h3><p>Supports recurrence, repeat-until-done, grace periods, and snoozed reminders.</p></article>
+      <article class="feature"><code>03</code><h3>Notification actions</h3><p>Complete, snooze, skip, or open a task directly from the notification.</p></article>
+      <article class="feature"><code>04</code><h3>Groups, tags, priorities</h3><p>The native format supports groups, tags, priorities, and subtasks.</p></article>
+      <article class="feature"><code>05</code><h3>Markdown write-back</h3><p>Completion, skip, and edit actions update the source line in the selected Markdown document.</p></article>
+      <article class="feature"><code>06</code><h3>Obsidian Tasks</h3><p>Partial compatibility with Obsidian Tasks emoji metadata. Query blocks, query language, and the full recurrence grammar are not supported.</p></article>
+    </div>
+  </section>
+
+  <section class="section shell" id="format">
+    <div class="section-head">
+      <h2>The format remains readable Markdown.</h2>
+      <p>NotifyMark native metadata lives directly on the task line and can be edited with a normal text editor.</p>
+    </div>
+    <div class="format"><pre>- [ ] Prepare report <span class="mark">@due(2026-10-05 18:00)</span> <span class="mark">@priority(high)</span> #study
+- [ ] Check backup <span class="mark">@repeat(1w)</span> <span class="mark">@snooze(30m)</span>
+
+<span class="mark">@due(...)</span>  <span class="mark">@repeat(...)</span>  <span class="mark">@repeatUntilDone(...)</span>
+<span class="mark">@grace(...)</span>  <span class="mark">@group(...)</span>  <span class="mark">@priority(...)</span>  <span class="mark">@tag(...)</span></pre></div>
+  </section>
+
+  <section class="section shell" id="privacy">
+    <div class="tech">
+      <article class="panel">
+        <p class="eyebrow">&gt; technical</p>
+        <h3>Current public beta</h3>
+        <div class="tech-list">
+          <div class="tech-row"><span>Version</span><strong>v0.10.1-beta.1</strong></div>
+          <div class="tech-row"><span>minSdk</span><strong>26 / Android 8.0</strong></div>
+          <div class="tech-row"><span>Language</span><strong>Java</strong></div>
+          <div class="tech-row"><span>License</span><strong>MIT</strong></div>
+          <div class="tech-row"><span>APK SHA-256</span><strong>f039f21175162717ae3feda75518e40e98a4727f2625ac8606aa296ac3ec70d6</strong></div>
+        </div>
+      </article>
+      <article class="panel privacy">
+        <p class="eyebrow">&gt; privacy</p>
+        <h3>No app-owned network client</h3>
+        <p>According to the current manifest/security audit, the app does not request INTERNET and does not perform its own HTTP/socket requests. External files are accessible only after the user selects them through SAF.</p>
+        <ul class="checklist">
+          <li>Tasks and settings are processed locally</li>
+          <li>External access is limited to user-selected SAF sources</li>
+          <li>App-owned data is excluded from Android cloud backup/device transfer</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section shell" id="release">
+    <div class="release">
+      <div>
+        <p class="eyebrow">&gt; release</p>
+        <h2>First public beta release.</h2>
+        <p>v0.10.1-beta.1 is published as a signed APK. It is a beta: keep a backup or version history before connecting important notes.</p>
+        <div class="actions"><a class="button primary" href="https://github.com/Regstar2/notify-mark/releases/download/v0.10.1-beta.1/NotifyMark-v0.10.1-beta.1.apk">Download APK</a><a class="button" href="https://github.com/Regstar2/notify-mark/releases/tag/v0.10.1-beta.1" target="_blank" rel="noreferrer">GitHub Release ↗</a></div>
+      </div>
+      <div class="release-meta">
+        <div><span>Version</span><strong>v0.10.1-beta.1</strong></div>
+        <div><span>Published</span><strong>2026-10-03</strong></div>
+        <div><span>Platform</span><strong>Android 8.0+</strong></div>
+        <div><span>UI</span><strong>Russian only</strong></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer shell">
+  <div><a class="brand" href="../../">REGSTAR</a><div>NotifyMark project page.</div></div>
+  <div class="footer-links"><a href="https://github.com/Regstar2/notify-mark" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://github.com/Regstar2/notify-mark/releases/tag/v0.10.1-beta.1" target="_blank" rel="noreferrer">Releases ↗</a></div>
+</footer>
+</body>
+</html>

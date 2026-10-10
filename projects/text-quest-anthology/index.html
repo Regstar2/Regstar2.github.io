@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090a0e">
+  <meta name="description" content="Text Quest Anthology is an Android collection of interactive stories. Play Zavalinka, a branching horror story, with offline reading, choices and local saves.">
+  <link rel="canonical" href="https://regstar2.github.io/projects/text-quest-anthology/">
+  <link rel="alternate" hreflang="en" href="https://regstar2.github.io/projects/text-quest-anthology/">
+  <link rel="alternate" hreflang="ru" href="https://regstar2.github.io/projects/text-quest-anthology/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://regstar2.github.io/projects/text-quest-anthology/">
+  <meta property="og:title" content="Text Quest Anthology — Interactive horror for Android">
+  <meta property="og:description" content="Text Quest Anthology is an Android collection of interactive stories. Play Zavalinka, a branching horror story, with offline reading, choices and local saves.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://regstar2.github.io/projects/text-quest-anthology/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Regstar2/text-quest-anthology/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
+  <meta name="twitter:card" content="summary">
+  <title>Text Quest Anthology — Interactive horror for Android</title>
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../projects/project.css">
+  <style>
+    .project-status{border-color:rgba(239,193,93,.25);background:rgba(210,153,34,.12);color:#efc15d}
+    .quest-title{font-size:clamp(3rem,5.5vw,5.5rem)!important;line-height:1.02!important;overflow-wrap:anywhere;letter-spacing:-.055em!important}
+    .quest-visual{min-height:500px;padding:clamp(24px,4vw,45px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;border:1px solid var(--border);border-radius:30px;background:radial-gradient(ellipse at 60% 0%,rgba(99,67,157,.27),transparent 54%),linear-gradient(156deg,#1b1930,#10111d 58%,#0d0e18);box-shadow:0 30px 80px rgba(0,0,0,.23)}
+    .quest-visual-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .quest-visual-top img{width:66px;height:66px;border-radius:16px;object-fit:contain;background:#0e101b}
+    .quest-visual-kicker{color:var(--code);font:600 .75rem/1.6 "JetBrains Mono",monospace;letter-spacing:.1em}
+    .quest-story-name{font-size:clamp(3.5rem,7vw,6rem);line-height:1;letter-spacing:-.06em;margin:14px 0}
+    .quest-story-line{max-width:440px;color:var(--muted-strong);font-size:1.18rem;line-height:1.55}
+    .quest-steps{display:flex;flex-wrap:wrap;gap:8px;padding-top:23px;border-top:1px solid rgba(255,255,255,.12)}
+    .quest-steps span{border:1px solid var(--border);border-radius:10px;padding:9px 11px;color:var(--muted);font:600 .69rem "JetBrains Mono",monospace;letter-spacing:.035em}
+    .quest-credits{color:var(--muted);line-height:1.8;margin-top:24px}
+    .quest-privacy-link{display:inline-block;margin-top:20px;color:var(--code)}
+    .quest-privacy-link:hover{text-decoration:underline}
+    .quest-cta-note{color:var(--muted);max-width:690px;margin:16px auto 0}
+    @media(max-width:1050px){.quest-visual{min-height:420px}.quest-title{font-size:clamp(3.2rem,8vw,5rem)!important}}
+    @media(max-width:760px){.quest-visual{min-height:380px}.quest-title{font-size:clamp(2.7rem,11vw,4.2rem)!important}.quest-story-name{font-size:clamp(3.2rem,13vw,5.2rem)}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Text Quest Anthology","applicationCategory":"GameApplication","operatingSystem":"Android 7.0 or later","softwareVersion":"0.4.0-rc.2","datePublished":"2026-10-10","downloadUrl":"https://github.com/Regstar2/text-quest-anthology/releases/download/v0.4.0-rc.2/text-quest-anthology-v0.4.0-rc.2.apk","url":"https://regstar2.github.io/projects/text-quest-anthology/","inLanguage":"en","description":"Text Quest Anthology is an Android collection of interactive stories. Play Zavalinka, a branching horror story, with offline reading, choices and local saves.","author":{"@type":"Person","name":"Regstar","url":"https://github.com/Regstar2"},"sameAs":["https://github.com/Regstar2/text-quest-anthology"],"offers":{"@type":"Offer","price":0,"priceCurrency":"RUB"}}</script>
+</head>
+<body class="project-page">
+  <header class="project-header project-shell">
+    <a class="brand" href="../../">REGSTAR</a>
+    <nav class="project-nav" aria-label="Project navigation">
+      <a href="#overview">Story</a>
+      <a href="#features">Features</a>
+      <a href="#technology">Technology</a>
+      <div class="lang-switch" aria-label="Language"><span class="active" aria-current="page">EN</span><a href="ru/" lang="ru" hreflang="ru">RU</a></div>
+      <a class="project-nav-github" href="https://github.com/Regstar2/text-quest-anthology" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+  <main>
+    <section class="project-hero project-shell">
+      <div class="project-hero-copy">
+        <a class="project-breadcrumb" href="../../#projects">← All projects</a>
+        <div class="project-identity">
+          <img class="project-logo" src="https://raw.githubusercontent.com/Regstar2/text-quest-anthology/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Text Quest Anthology icon">
+          <span class="project-status">MVP · v0.4.0-rc.2</span>
+        </div>
+        <p class="code-label">&gt; android / interactive fiction / horror</p>
+        <h1 class="quest-title">Text Quest Anthology</h1>
+        <p class="project-lead">A night in an abandoned settlement. Your choices decide what happens next.</p>
+        <p class="project-summary">Text Quest Anthology is an Android app for interactive fiction. Its first complete story, Zavalinka, follows a night in a deserted settlement that turns into a fight for survival.</p>
+        <div class="hero-tags project-tags"><span>Android</span><span>React Native</span><span>TypeScript</span><span>Ink</span></div>
+        <div class="project-actions">
+          <a class="button button-primary project-download" href="https://github.com/Regstar2/text-quest-anthology/releases/download/v0.4.0-rc.2/text-quest-anthology-v0.4.0-rc.2.apk">Download APK</a>
+          <a class="button button-secondary" href="https://github.com/Regstar2/text-quest-anthology/releases/tag/v0.4.0-rc.2" target="_blank" rel="noreferrer">Release notes ↗</a>
+          <a class="button button-secondary" href="https://github.com/Regstar2/text-quest-anthology" target="_blank" rel="noreferrer">Source code ↗</a>
+        </div>
+      </div>
+      <div class="quest-visual" aria-label="Illustrative Zavalinka story card">
+        <div class="quest-visual-top"><span class="quest-visual-kicker">THE FIRST STORY</span><img src="https://raw.githubusercontent.com/Regstar2/text-quest-anthology/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="" aria-hidden="true"></div>
+        <div><p class="code-label">&gt; story / 01</p><div class="quest-story-name">Zavalinka</div><p class="quest-story-line">An overnight stay in a deserted settlement becomes a fight for survival.</p></div>
+        <div class="quest-steps"><span>READ</span><span>CHOOSE</span><span>SURVIVE</span></div>
+      </div>
+    </section>
+    <section class="project-facts">
+      <div class="facts-grid project-shell">
+        <div><span>Stage</span><strong>MVP</strong></div>
+        <div><span>Platform</span><strong>Android 7.0+</strong></div>
+        <div><span>Story</span><strong>Zavalinka</strong></div>
+        <div><span>Release</span><strong>v0.4.0-rc.2</strong></div>
+      </div>
+    </section>
+    <section id="overview" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; The story</p><h2>Zavalinka</h2></div>
+        <p>A horror story told through pages of text and decisions. Choices affect which scenes become available, the characters' circumstances and the ending.</p>
+      </div>
+      <div class="project-two-column">
+        <article class="tech-panel"><p class="code-label">01 / story</p><h2>A branching narrative</h2><p class="quest-credits">The story is written in Ink. Decisions lead down different paths, and reaching the end does not mean every outcome has been seen.</p></article>
+        <article class="privacy-panel"><p class="code-label">02 / progression</p><h2>Continue where you stopped</h2><p class="quest-credits">Progress and discovered endings are stored on the device. You can restart a completed playthrough without erasing the endings you have already found.</p></article>
+      </div>
+    </section>
+    <section id="features" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; gameplay</p><h2>What you can play</h2></div>
+        <p>The MVP ships with one complete story and the reading features needed to finish it.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-index">01</span><span class="feature-icon">READ</span><h3>Page-based reading</h3><p>Read the story page by page, with a text size setting that repaginates the content.</p></article>
+        <article class="feature-card"><span class="feature-index">02</span><span class="feature-icon">CHOICE</span><h3>Decisions and consequences</h3><p>Make choices at story branches and reach different terminal endings.</p></article>
+        <article class="feature-card"><span class="feature-index">03</span><span class="feature-icon">SAVE</span><h3>Local progress</h3><p>Resume after closing the application. Read progress is stored on the device.</p></article>
+        <article class="feature-card"><span class="feature-index">04</span><span class="feature-icon">OFFLINE</span><h3>Offline story</h3><p>Read, make choices, continue and revisit endings without a required internet connection.</p></article>
+        <article class="feature-card"><span class="feature-index">05</span><span class="feature-icon">LIBRARY</span><h3>Story library</h3><p>Choose a story from the built-in catalogue. The current MVP includes Zavalinka.</p></article>
+        <article class="feature-card"><span class="feature-index">06</span><span class="feature-icon">RESET</span><h3>Play again</h3><p>Start a new playthrough while retaining the record of discovered endings.</p></article>
+      </div>
+    </section>
+    <section id="technology" class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; stack / scope</p><h2>Built for Android</h2></div>
+        <p>React Native and TypeScript power the app. Ink/inkjs handles the interactive narrative, with stories packaged in the application.</p>
+      </div>
+      <div class="project-two-column">
+        <article class="tech-panel">
+          <p class="code-label">Technology</p>
+          <div class="tech-list">
+          <div><strong>Android 7.0+</strong><span>Platform</span></div>
+          <div><strong>React Native · TypeScript</strong><span>App</span></div>
+          <div><strong>Ink · inkjs</strong><span>Story engine</span></div>
+          <div><strong>On-device saves</strong><span>Storage</span></div>
+          </div>
+        </article>
+        <article class="privacy-panel">
+          <p class="code-label">Current scope</p><h2>Public MVP, not a finished anthology</h2><p class="quest-credits">The current release contains one story in Russian. There are no user accounts, cloud saves, browser version or iOS build. The main story works offline; the optional advertising SDK can use the network.</p>
+        </article>
+      </div>
+    </section>
+    <section class="project-section project-shell">
+      <div class="project-section-heading">
+        <div><p class="code-label">&gt; data</p><h2>Privacy and installation</h2></div>
+        <p>Reading progress, settings and unlocked endings stay in local app storage. The Android build includes Yandex Mobile Ads, which can process technical data when ads load. <a class="quest-privacy-link" href="../../privacy/text-quest-anthology/" target="_blank" rel="noreferrer">Privacy policy ↗</a></p>
+      </div>
+    </section>
+    <section class="project-cta project-shell">
+      <img src="https://raw.githubusercontent.com/Regstar2/text-quest-anthology/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Application icon">
+      <p class="code-label">$ current_release</p>
+      <h2>Play Zavalinka</h2>
+      <p class="quest-cta-note">Android APK · release candidate v0.4.0-rc.2. The app is not represented here as already published on RuStore.</p>
+      <div class="project-actions project-actions-center">
+        <a class="button button-primary project-download" href="https://github.com/Regstar2/text-quest-anthology/releases/download/v0.4.0-rc.2/text-quest-anthology-v0.4.0-rc.2.apk">Download APK</a>
+        <a class="button button-secondary" href="https://github.com/Regstar2/text-quest-anthology/releases/tag/v0.4.0-rc.2" target="_blank" rel="noreferrer">Release notes ↗</a>
+      </div>
+    </section>
+  </main>
+  <footer class="project-footer project-shell">
+    <span>Project page · Text Quest Anthology</span>
+    <div class="project-footer-contacts"><a href="https://github.com/Regstar2/text-quest-anthology" target="_blank" rel="noreferrer">GitHub ↗</a><span>Updated · 10 Oct 2026</span></div>
+  </footer>
+</body>
+</html>

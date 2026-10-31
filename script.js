@@ -57,7 +57,7 @@ if (menuToggle && siteHeader && siteNav) {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && siteHeader.classList.contains('menu-open')) {
       setMenuOpen(false);
       menuToggle.focus();
     }
